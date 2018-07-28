@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.main">
+	<select id="getCheckTimer"  resultType="int">
+		select onOrOff from isOn
+	</select>
+	<select id="getPassTimer"  resultType="com.airquay.rowing.vo.main">
+		select pastHour, pastMinute, pastSecond, pastMiliSecond from isOn;
+	</select>
+	<select id="getRankList"  parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
+		select t.raceNum, t.bowNum, raceinfo.raceDate, concat(t.arriveHour,':', t.arriveMinute,':', t.arriveSecond,':', t.arriveMiliSecond) as arriveTime from rowing.${tableType} t
+		left join rowing.raceinfo raceinfo on raceinfo.raceNum = t.raceNum
+		where t.raceNum = ${raceNum} and raceinfo.raceDate = '${raceDate}' order by arriveTime;
+<!-- 		select raceNum, bowNum, concat(arriveHour,':', arriveMinute,':', arriveSecond,':', arriveMiliSecond) as arriveTime from tableType order by arriveTime; -->
+	</select>
+</mapper>

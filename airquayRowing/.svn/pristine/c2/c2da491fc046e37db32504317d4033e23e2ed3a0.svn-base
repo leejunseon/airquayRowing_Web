@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.main">
+	<select id="raceStartPoling" parameterType="String" resultType="int">
+		select ri.check_onoff from airquay_rowing.race_info ri where ri.race_num = '${value}';
+	</select>
+	<select id="getPassTimer"  resultType="com.airquay.rowing.vo.main">
+		select pastHour, pastMinute, pastSecond, pastMiliSecond from isOn;
+	</select>
+	<select id="getRaceInfo" parameterType="String" resultType="com.airquay.rowing.vo.main">
+		select ri.race_num as raceNum, ri.day_race_num as dayRaceNum, ri.event_name as eventName, ri.race_date as raceDate,
+		ri.round_type as roundType, ri.start_time as startTime, ri.stop_time as stopTime, ri.check_onoff as checkOnoff,
+		ri.progression from airquay_rowing.race_info ri where ri.race_date = '${value}';
+	</select>
+	<select id="getBowInfo" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
+		select rc.record_num as recordNum, rc.race_num as raceNum, rc.team_num as teamNum, rc.rank, rc.bow_num as bowNum, rc.ftime, rc.htime, rc.hftime, rc.finish_time as finishTime,
+		ti.team_name as teamName, ti.team_country as teamCountry
+		from airquay_rowing.record rc
+		left join airquay_rowing.team_info ti on ti.team_num = rc.team_num
+		where rc.race_num = '${raceNum}'
+		order by ${orderType};
+	</select>
+	<select id="getRankList"  parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
+		select t.raceNum, t.bowNum, bi.countryName, ri.raceDate, concat(t.arriveHour,':', t.arriveMinute,':', t.arriveSecond,':', t.arriveMiliSecond) as arriveTime from rowing.${tableType} t
+		left join rowing.raceinfo ri on ri.raceNum = t.raceNum
+		left join rowing.boatinfo bi on t.bowNum = bi.bowNum
+		where t.raceNum = ${raceNum} 
+		and ri.raceDate = t.raceDate
+		and t.raceDate = bi.raceDate
+		and t.raceNum = bi.raceNum 
+		and ri.raceDate = '${raceDate}' 
+		order by arriveTime;
+	</select>
+	<select id="checkUser" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
+		select * from airquay_rowing.airquay_user au where au.user_id = '${userId}' and au.user_pw = '${userPw}'
+	</select>
+	<select id="getUserInfo" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
+		select au.user_no as userNo, au.user_id as userId, au.user_name as userName, au.sex, au.birth, ti.team_name as teamName, ti.team_country as teamCountry, ti.team_no as teamNo 
+		from airquay_rowing.airquay_user au 
+		left join airquay_rowing.team_info ti on ti.team_no = au.team_no
+		where au.user_id = '${userId}' and au.user_pw = '${userPw}'
+	</select>
+</mapper>

@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" href="MainStyle.css" />
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setInterval(
+                AjaxCall , 1)//서버의 타이머 켜짐의 유무를 나타내는 값인 isOn 테이블의 onOrOff값이 1이면 서버의 타이머도 시작
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive2 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive3 , 900)
+        });ㅇ
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive4 , 900)ㅇ
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive5 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive6 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1000_1 , 2000)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1000_2 , 2000)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1000_3 , 2000)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1000_4 , 2000)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1000_5 , 2000)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1000_6 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1500_1 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1500_2 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1500_3 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1500_4 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1500_5 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive1500_6 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive2000_1 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive2000_2 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive2000_3 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive2000_4 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive2000_5 , 900)
+        });
+        $(document).ready(function() {
+            setInterval(
+                RecordReceive2000_6 , 900)//각각의 hut 지점 기록을 업데이트 하기위한 함수호출
+        });
+    </script>
+</head>
+<body onload="realTimeClock();init();">
+    &nbsp;&nbsp;&nbsp;
+    <button id="connectButtonStart">S</button>
+    <button id="connectButton500">5</button>
+    <button id="connectButton1000">H</button>
+    <button id="connectButton1500">5</button>
+    <button id="connectButtonFinish">F</button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+    </div>
+    <div class="container">
+        <form name="rtcForm">
+            <input id="infrontRaceNum" align="left" type="text" size="2"
+            readonly="readonly" value="Race" /> <input id="raceNumber"
+            type="text" size="1" readonly="readonly" value="5" /> <input
+            type="text" size="4" id="status" value=" 경기중 " readonly="readonly" />
+            <input type="text" size="130" id="blank" readonly="readonly" /> <input
+            id="date" type="text" size="6" name="rtcInput" readonly="readonly" />
+            <input id="time" type="text" size='4' name="rdcInput"
+            readonly="readonly" />
+        </form>
+    </div>
+    <table id="info" align="center">
+        <tr>
+            <th>StartTime</th>
+            <th>Event</th>
+            <th>Round</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>Prog.</th>
+        </tr>
+        <tr>
+            <td id="raceStartTime">10:22</td>
+            <td id="eventName">M4x</td>
+            <td id="roundName">Heat1</td>
+            <td id="firstLane">대전</td>
+            <td id="secondLane">서울</td>
+            <td id="thirdLane">부산</td>
+            <td id="fourthLane">충남</td>
+            <td id="fifthLane">경북</td>
+            <td id="sixthLane">경기</td>
+            <td id="prog">1-> FA, 2-6-> Rep</td>
+        </tr>
+    </table>
+    &nbsp;&nbsp;&nbsp;
+    <input id="watchtime" type='text' size='10' readonly="readonly" value='00:00:00.00'/>
+    <input id="blank" type='text' size="110"/>
+    <center>
+        <div style="display: inline-block">
+            <table id="raceRecord500" cellpadding="12">
+                <tr>
+                    <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;500 m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                </tr>
+                <tr>
+                    <td class="bow">1</td>
+                    <td id="raceRecord500_1">00:00:00.00</td>
+                      <td id="rank5_1">(1)</td>
+                </tr>
+                <tr>
+                    <td class="bow">2</td>
+                    <td id="raceRecord500_2">00:00:00.00</td>
+                     <td id="rank5_2">(1)</td>
+                </tr>
+                <tr>
+                    <td class="bow">3</td>
+                    <td id="raceRecord500_3">00:00:00.00</td>
+                     <td id="rank5_3">(1)</td>
+                </tr>
+                <tr>
+                    <td class="bow">4</td>
+                    <td id="raceRecord500_4">00:00:00.00</td>
+                    <td id="rank5_4">(1)</td>
+                </tr>
+                <tr>
+                    <td class="bow">5</td>
+                    <td id="raceRecord500_5">00:00:00.00</td>
+                    <td id="rank5_5">(1)</td>
+                </tr>
+                <tr>
+                    <td class="bow">6</td>
+                    <td id="raceRecord500_6">00:00:00.00</td>
+                   <td id="rank5_6">(1)</td>
+                </tr>
+            </table>
+        </div>
+        <div style="display: inline-block">
+            <table id="raceRecord1000" cellpadding="12">
+                <tr>
+                    <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1000 m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                </tr>
+                <tr>
+                  <td class="bow">1</td>
+                  <td id="raceRecord1000_1">00:00:00.00</td>
+                 <td id="rank10_1">(1)</td>
+              </tr>
+              <tr>
+                  <td class="bow">2</td>
+                  <td id="raceRecord1000_2">00:00:00.00</td>  <td id="rank10_2">(1)</td>
+              </tr>
+              <tr>
+                  <td class="bow">3</td>
+                  <td id="raceRecord1000_3">00:00:00.00</td>  <td id="rank10_3">(1)</td>
+              </tr>
+              <tr>
+                  <td class="bow">4</td>
+                  <td id="raceRecord1000_4">00:00:00.00</td>  <td id="rank10_4">(1)</td>
+              </tr>
+              <tr>
+                  <td class="bow">5</td>
+                  <td id="raceRecord1000_5">00:00:00.00</td> <td id="rank10_5">(1)</td>
+              </tr>
+              <tr>
+                  <td class="bow">6</td>
+                  <td id="raceRecord1000_6">00:00:00.00</td>  <td id="rank10_6">(1)</td>
+              </tr>
+          </table>
+      </div>
+      <div style="display: inline-block">
+        <table id="raceRecord1500" cellpadding="12">
+            <tr>
+                <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1500 m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            </tr>
+            <tr>
+                <td class="bow">1</td>
+                <td id="raceRecord1500_1">00:00:00.00</td>  <td id="rank15_1">(1)</td>
+            </tr>
+            <tr>
+                <td class="bow">2</td>
+                <td id="raceRecord1500_2">00:00:00.00</td>  <td id="rank15_2">(1)</td>
+            </tr>
+            <tr>
+                <td class="bow">3</td>
+                <td id="raceRecord1500_3">00:00:00.00</td>  <td id="rank15_3">(1)</td>
+            </tr>
+            <tr>
+                <td class="bow">4</td>
+                <td id="raceRecord1500_4">00:00:00.00</td>  <td id="rank15_4">(1)</td>
+            </tr>
+            <tr>
+                <td class="bow">5</td>
+                <td id="raceRecord1500_5">00:00:00.00</td> <td id="rank15_5">(1)</td>
+            </tr>
+            <tr>
+                <td class="bow">6</td>
+                <td id="raceRecord1500_6">00:00:00.00</td>  <td id="rank15_6">(1)</td>
+            </tr>
+        </table>
+    </div>
+    <div style="display: inline-block">
+        <table id="raceRecord2000" cellpadding="12">
+            <tr>
+                <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2000 m&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            </tr>
+            <tr>
+                <td class="bow">1</td>
+                <td id="raceRecord2000_1">00:00:00.00</td>
+                <td id="rank20_1">(1)</td>
+            </tr>
+            <tr>
+                <td class="bow">2</td>
+                <td  id="raceRecord2000_2">00:00:00.00</td>
+                 <td id="rank20_2">(1)</td>
+            </tr>
+            <tr>
+                <td class="bow">3</td>
+                <td  id="raceRecord2000_3">00:00:00.00</td>
+                <td id="rank20_3">(1)</td>
+            </tr>
+            <tr>
+                <td class="bow">4</td>
+                <td  id="raceRecord2000_4">00:00:00.00</td>
+                 <td id="rank20_4">(1)</td>
+            </tr>
+            <tr>
+                <td class="bow">5</td>
+                <td  id="raceRecord2000_5">00:00:00.00</td>
+                <td id="rank20_5">(1)</td>
+            </tr>
+            <tr>
+                <td class="bow">6</td>
+                <td  id="raceRecord2000_6">00:00:00.00</td>
+                <td id="rank20_6">(1)</td>
+            </tr>
+        </table>
+    </div>
+    <div style="display: inline-block">
+        <table id="raceRecordRK" cellpadding="12">
+            <tr>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            </tr>
+            <tr>
+              <td id="raceRecordRK_1">&nbsp;</td>
+          </tr>
+          <tr>
+            <td id="raceRecordRK_2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td id="raceRecordRK_3">&nbsp;</td>
+        </tr>
+        <tr>
+            <td id="raceRecordRK_4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td id="raceRecordRK_5">&nbsp;</td>
+        </tr>
+        <tr>
+            <td id="raceRecordRK_6">&nbsp;</td>
+        </tr>
+    </table>
+</div>
+
+<form action="nextRace.jsp" method="post">
+</center>
+<span style="float:right">
+    <input type="button" value="완료" id="complete" onclick="complete()"/>
+    &nbsp;
+</span>
+</form>
+<script src="mainJS.js"></script>
+
+</body>
+</html>
+

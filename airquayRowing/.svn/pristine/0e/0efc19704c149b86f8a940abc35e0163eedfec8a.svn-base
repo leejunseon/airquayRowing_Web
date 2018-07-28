@@ -1,0 +1,23 @@
+package com.airquay.rowing.dao;
+
+import java.util.List;
+
+import com.airquay.rowing.vo.main;
+
+public interface mainDAO {
+
+	Integer raceStartPoling(String raceNum);
+
+	List passTimer();
+
+	List getRank(main main);
+
+	List getRaceInfo(String toDay);
+
+	List getbowInfo(main main);
+
+	List checkUser(main main);
+
+	List getUserInfo(main main);
+
+}
