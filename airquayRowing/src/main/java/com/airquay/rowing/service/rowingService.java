@@ -57,22 +57,23 @@ public class rowingService {
 		return userInfo;
 	}
 
-	public Boolean setRaceStart() {
+	public Boolean setRaceStart(main main) {
 		// TODO Auto-generated method stub
 		Boolean result = false;
 //try catch 성공 = return = true
 		// 실패 = return = false
-		mainDAO.setRaceStart();
+		mainDAO.setRaceStart(main);
 
 		return result;
 	}
 
-	public Boolean setRaceFinish() {
+	public Boolean pastTimeSave(main main) {
 		// TODO Auto-generated method stub
-		Boolean result=false;
-		mainDAO.setRaceFinish();
 		
+		Boolean result=false;
+		mainDAO.pastTimeSave(main);
 		return result;
 	}
+
 
 }

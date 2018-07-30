@@ -124,14 +124,28 @@ public class MainController {
 	@RequestMapping(value = "/main/setRaceStart", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody Boolean setRaceStart(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		Boolean result = false;
-		result = rowingService.setRaceStart();
+		String checkOnoff = request.getParameter("raceDate");
+		main main=new main();
+		main.setCheckOnoff(checkOnoff);
+		result = rowingService.setRaceStart(main);
 		return result;
-	}	
+	}		
 	
-	@RequestMapping(value = "/main/setRaceFinish", method = { RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody Boolean setRaceFinish(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+	@RequestMapping(value = "/main/pastTimeSave", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody Boolean pastTimeSave(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		Boolean result = false;
-		result = rowingService.setRaceFinish();
+		String pastHour = request.getParameter("HOUR");
+		String pastMinute = request.getParameter("MINUTE");
+		String pastSecond = request.getParameter("SECOND");
+		String pastMiliSecond = request.getParameter("MILISECOND");
+		main main=new main();
+		main.setPastHour(Integer.parseInt(pastHour));
+		main.setPastMinute(Integer.parseInt(pastMinute));
+		main.setPastSecond(Integer.parseInt(pastSecond));
+		main.setPastMiliSecond(Integer.parseInt(pastMiliSecond));
+		result = rowingService.pastTimeSave(main);
 		return result;
-	}
+	}		
+	
+	
 }

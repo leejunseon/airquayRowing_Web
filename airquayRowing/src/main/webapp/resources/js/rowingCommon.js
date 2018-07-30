@@ -1,6 +1,7 @@
 var common={
+		
 	RacePoling : function(){
-		console.log("race info : "+raceInfo)
+		console.log("Race poling, raceInfo : "+raceInfo)
 		if(raceInfo != undefined){
 			console.log("poling status: "+polingStatus)
 			if(polingStatus=="start"){
@@ -12,12 +13,11 @@ var common={
 			common.getRaceInfo();
 		}
 	},
+	
 	startPoling : function(){
+		console.log("startPoling");
 		var json_data = "raceNum="+($("#infrontRaceNum").val()+1);
-		var url = 'http://localhost:8080/airquayRowing/main/raceStartPoling';
-		
-		console.log("START")
-		
+		var url = 'http://localhost:8080/airquayRowing/main/raceStartPoling';//onoff 값 확인
 		$.ajax({
 			url:url,
 			type : 'GET',
@@ -27,10 +27,12 @@ var common={
 			data : json_data,
 			dataType : 'json',
 			success : function(data){
-				if(data==1){
+				if(data==1){//onoff가 1이면
+					console.log("data = "+data)
 					common.onOffinish_timer(data);
 					polingStatus = "500m";
-				}else if(data==2){
+				}else if(data==2){//onoff가 2이면
+					console.log("data = "+data)
 					common.onOffinish_timer(data);
 				}
 			},
@@ -38,7 +40,9 @@ var common={
 			}
 		});
 	},
+	
 	beforeStartPolling : function(){
+		console.log("beforeStartPolling")
 		var json_data = "raceNum="+($("#infrontRaceNum").val()+1)+"&";
 		if(polingStatus=="500m"){
 			json_data += "orderType=finish_time";
@@ -49,7 +53,8 @@ var common={
 		}else if(polingStatus=="finish"){
 			json_data += "orderType=finishTime";
 		}
-			
+		console.log("json_data : "+json_data);
+		
 		var url = 'http://localhost:8080/airquayRowing/main/beforeStartPolling';
 		$.ajax({
 			url:url,
@@ -66,7 +71,9 @@ var common={
 			}
 		});
 	},
+	
 	dispRank : function(rankList){
+		console.log("dispRank")
 		var dispRankCnt = 0;
 		if(polingStatus=="500m"){
 			for(var i=0; i<rankList.length; i++){
@@ -114,9 +121,10 @@ var common={
 			}
 		}
 	},
+	
 	getRaceInfo : function(){
-		var json_data = "raceDate="+$("#toDay").text();
 		console.log("getRaceInfo")
+		var json_data = "raceDate="+$("#toDay").text();//toDay를 raceDate파라미터로 넘김
 		$.ajax({
 			url:'http://localhost:8080/airquayRowing/main/getRaceInfo',
 			type : 'GET',
@@ -135,7 +143,9 @@ var common={
 			}
 		});
 	},
+	
 	getBowInfo : function(){
+		console.log("getBowInfo")
 		var json_data = "raceNum="+($("#infrontRaceNum").val()+1);
 		$.ajax({
 			url:'http://localhost:8080/airquayRowing/main/getBowInfo',
@@ -162,7 +172,9 @@ var common={
 			}
 		});
 	},
+	
 	dispBowList : function(){
+		console.log("dispBowList")
 		if(bowInfo.length>0){
 			for(var i=0; i<bowInfo.length; i++){
 				for(var j=0; j<6; j++){
@@ -182,7 +194,9 @@ var common={
 		}
 
 	},
+	
 	dispRaceList : function(){
+		console.log("dispRaceList")
 		var innerHtml = "";
 		for(var i=0; i<raceInfo.length; i++){
 			innerHtml += "<option value="+i+"> Race "+raceInfo[i].raceNum+"</option>"
@@ -191,7 +205,9 @@ var common={
 		common.dispRaceInfo();
 		common.getBowInfo();
 	},
+	
 	dispRaceInfo : function(){
+		console.log("dispRaceInfo")
 		var raceNum = $("#infrontRaceNum").val();
 		if(raceInfo[raceNum].startTime == null){
 			$("#raceStartTime").text("Not started yet.");
@@ -202,10 +218,13 @@ var common={
 		$("#roundName").text(raceInfo[raceNum].roundType);
 		$("#prog").text(raceInfo[raceNum].progression);
 	},
+	
 	refresh : function(){
 		$("#watchtime").text("00:00:00.00");
 	},
+	
 	onOffinish_timer : function(num){
+		console.log("onOffinish_timer, num : "+num)
 		if (num==1) {
 			common.start(false);
 			flag=1;
@@ -218,12 +237,14 @@ var common={
 			common.PastTimeReceive();
 		}
 	},
+	
 	process : function(){
 		var now = new Date();
 		var nowTime = now.getTime();
 		var time = nowTime - startTime;
 		common.showTime(time);
 	},
+	
 	showTime : function(time){
 		var totalsec = parseInt(time / 1000, 10);
 		var tinysec = time % 100;
@@ -237,26 +258,32 @@ var common={
 		output = leadingZeros(hour,2) + ":" + leadingZeros(min,2) + ":" + leadingZeros(sec,2) + "." + tinysec;
 		$("#watchtime").text(output)
 	},
+	
 	start : function(twoYn){
+		console.log("start, twoYn : "+twoYn)
 		var now = new Date();
 		if(twoYn==true){
-			$("#raceStatus").text("경기중");
+			$("#raceStatus").text("Two minutes");
 			$("#raceStatus").css("background-color", "#FF0000");
 		}else{
 			startTime = now.getTime();
 			stopwatch = setInterval(common.process, 10);
-			$("#raceStatus").text("Two minutes");
+			$("#raceStatus").text("경기중");
 			$("#raceStatus").css("background-color", "#FF0000");
 			count = 0;
 		}
 
 	},
+	
 	stop : function(){
+		console.log("stop")
 		clearInterval(stopwatch);
 		$("#status").val("경기종료");
 		$("#status").css("background-color", "#969696");
 	},
+	
 	PastTimeReceive : function(){
+		console.log("PastTimeReceive")
 		$.ajax({
 			url:'http://localhost:8080/airquayRowing/main/passTimer',
 			type : 'POST',
@@ -269,4 +296,5 @@ var common={
 			}
 		});
 	},
+	
 }

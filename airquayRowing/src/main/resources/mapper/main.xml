@@ -59,12 +59,12 @@
 		where airquay_user.user_id = '${userId}' and airquay_user.user_pw = '${userPw}'
 	</select>	
 	
-	<update id="setRaceStart">
-		update raceinfo set check_onoff=1;
+	<update id="setRaceStart" parameterType="com.airquay.rowing.vo.main">
+		update raceinfo set check_onoff='${checkOnoff}';
 	</update>
 	
-	<update id="setRaceFinish">
-		update isOn set onOrOff=0;
+	<update id="pastTimeSave" parameterType="com.airquay.rowing.vo.main">
+		update isOn set pastHour='${pastHour}', pastMinute='${pastMinute}', pastSecond='${pastSecond}', pastMiliSecond='${pastMiliSecond}';	
 	</update>
 	
 </mapper>

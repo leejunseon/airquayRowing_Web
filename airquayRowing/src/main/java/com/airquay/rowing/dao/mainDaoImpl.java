@@ -67,16 +67,15 @@ public class mainDaoImpl  implements mainDAO{
 	}
 
 	@Override
-	public void setRaceStart() {
+	public void setRaceStart(main main) {
 		// TODO Auto-generated method stub
-		sqlSession.update(mapper+"setRaceStart");
+		sqlSession.update(mapper+"setRaceStart",main);
 	}
 
 	@Override
-	public void setRaceFinish() {
+	public void pastTimeSave(main main) {
 		// TODO Auto-generated method stub
-		sqlSession.update(mapper+"setRaceFinish");
-		
+		sqlSession.update(mapper+"pastTimeSave",main);
 	}
 
 }

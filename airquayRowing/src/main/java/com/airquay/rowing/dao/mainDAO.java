@@ -20,8 +20,8 @@ public interface mainDAO {
 
 	List getUserInfo(main main);
 
-	void setRaceStart();
+	void setRaceStart(main main);
 
-	void setRaceFinish();
+	void pastTimeSave(main main);
 	
 }

@@ -2,7 +2,7 @@ package com.airquay.rowing.vo;
 
 public class main {
 
-	    private Integer raceNum;
+		private Integer raceNum;
 	    private Integer dayRaceNum;
 	    private String eventName;
 	    private String raceDate;
@@ -41,6 +41,39 @@ public class main {
 	    private String teamName;
 	    private String teamCountry;
 	    private Integer team_num;
+	    
+	    //ison_table
+	    private Integer pastHour;
+		private Integer pastMinute;
+	    private Integer pastSecond;
+	    private Integer pastMiliSecond;
+	   
+	    public Integer getPastHour() {
+			return pastHour;
+		}
+		public void setPastHour(Integer pastHour) {
+			this.pastHour = pastHour;
+		}
+		public Integer getPastMinute() {
+			return pastMinute;
+		}
+		public void setPastMinute(Integer pastMinute) {
+			this.pastMinute = pastMinute;
+		}
+		public Integer getPastSecond() {
+			return pastSecond;
+		}
+		public void setPastSecond(Integer pastSecond) {
+			this.pastSecond = pastSecond;
+		}
+		public Integer getPastMiliSecond() {
+			return pastMiliSecond;
+		}
+		public void setPastMiliSecond(Integer pastMiliSecond) {
+			this.pastMiliSecond = pastMiliSecond;
+		}
+
+		
 	    public Integer getteam_num() {
 			return team_num;
 		}
