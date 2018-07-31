@@ -73,6 +73,30 @@ public class main {
 			this.pastMiliSecond = pastMiliSecond;
 		}
 
+		private String Fivehundred_Time;
+		private String Thousand_Time;
+		private String ThousandFivehundred_Time;
+		
+		public String getFivehundred_Time() {
+			return Fivehundred_Time;
+		}
+		public void setFivehundred_Time(String fivehundred_Time) {
+			Fivehundred_Time = fivehundred_Time;
+		}
+		public String getThousand_Time() {
+			return Thousand_Time;
+		}
+		public void setThousand_Time(String thousand_Time) {
+			Thousand_Time = thousand_Time;
+		}
+		public String getThousandFivehundred_Time() {
+			return ThousandFivehundred_Time;
+		}
+		public void setThousandFivehundred_Time(String thousandFivehundred_Time) {
+			ThousandFivehundred_Time = thousandFivehundred_Time;
+		}
+		
+		
 		
 	    public Integer getteam_num() {
 			return team_num;

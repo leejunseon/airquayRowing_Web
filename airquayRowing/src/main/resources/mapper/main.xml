@@ -4,17 +4,34 @@
 
 <mapper namespace="mapper.main">
 	<select id="raceStartPoling" parameterType="String" resultType="int">
-		select raceinfo.check_onoff from airquay.raceinfo raceinfo where raceinfo.race_num = '${value}';
+		select raceinfo.check_onoff 
+		
+		from airquay.raceinfo raceinfo 
+		
+		where raceinfo.race_num = '${value}';
 	</select>
 	
 	<select id="getPassTimer"  resultType="com.airquay.rowing.vo.main">
-		select pastHour, pastMinute, pastSecond, pastMiliSecond from isOn;
+		select pastHour, pastMinute, pastSecond, pastMiliSecond 
+		
+		from isOn;
 	</select>
 	
 	<select id="getRaceInfo" parameterType="String" resultType="com.airquay.rowing.vo.main">
-		select raceinfo.race_num as raceNum, raceinfo.day_race_num as dayRaceNum, raceinfo.event_name as eventName, raceinfo.race_date as raceDate,
-		raceinfo.round_type as roundType, raceinfo.start_time as startTime, raceinfo.stop_time as stopTime, raceinfo.check_onoff as checkOnoff,
-		raceinfo.progression from airquay.raceinfo raceinfo where raceinfo.race_date = '${value}';
+		select 
+		raceinfo.race_num as raceNum, 
+		raceinfo.day_race_num as dayRaceNum, 
+		raceinfo.event_name as eventName, 
+		raceinfo.race_date as raceDate,
+		raceinfo.round_type as roundType, 
+		raceinfo.start_time as startTime, 
+		raceinfo.stop_time as stopTime, 
+		raceinfo.check_onoff as checkOnoff,
+		raceinfo.progression 
+		
+		from airquay.raceinfo raceinfo
+		
+		where raceinfo.race_date = '${value}';
 	</select>
 	
 	<select id="getBowInfo" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
@@ -24,47 +41,76 @@
 		rec.team_num as teamNum, 
 		rec.rank, 
 		rec.bow_num as bowNum, 
-		rec.500_time as 500Time, 
-		rec.1000_time as 1000Time, 
-		rec.1500_time as 1500Time, 
+		rec.500_time as Fivehundred_Time, 
+		rec.1000_time as Thousand_Time, 
+		rec.1500_time as ThousandFivehundred_Time, 
 		rec.finish_time as finishTime,
 		ti.team_name as teamName, 
 		ti.team_country as teamCountry
+		
 		from airquay.record rec 
 		left join airquay.team_info ti on ti.team_num = rec.team_num
+		
 		where rec.race_num = '{raceNum}'
 		order by ${orderType}
 	</select>
 	
 	<select id="getRankList"  parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
-		select t.raceNum, t.bowNum, bi.countryName, raceinfo.raceDate, concat(t.arriveHour,':', t.arriveMinute,':', t.arriveSecond,':', t.arriveMiliSecond) as arriveTime from rowing.${tableType} t
+		select 
+		t.raceNum, t.bowNum, 
+		bi.countryName, 
+		raceinfo.raceDate, 
+		concat(t.arriveHour,':', t.arriveMinute,':', t.arriveSecond,':', t.arriveMiliSecond) as arriveTime 
+		
+		from rowing.${tableType} t
 		left join rowing.raceinfo raceinfo on raceinfo.raceNum = t.raceNum
 		left join rowing.boatinfo bi on t.bowNum = bi.bowNum
+		
 		where t.raceNum = ${raceNum} 
 		and raceinfo.raceDate = t.raceDate
 		and t.raceDate = bi.raceDate
 		and t.raceNum = bi.raceNum 
 		and raceinfo.raceDate = '${raceDate}' 
+		
 		order by arriveTime;
 	</select>
 	
 	<select id="checkUser" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
-		select * from airquay.airquay_user airquay_user where airquay_user.user_id = '${userId}' and airquay_user.user_pw = '${userPw}'
+		select * 
+		
+		from airquay.airquay_user airquay_user 
+		
+		where airquay_user.user_id = '${userId}' 
+		and airquay_user.user_pw = '${userPw}'
 	</select>
 	
 	<select id="getUserInfo" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
-		select airquay_user.user_no as userNo, airquay_user.user_id as userId, airquay_user.user_name as userName, airquay_user.sex, airquay_user.birth, team_info.team_name as teamName, team_info.team_country as teamCountry, team_info.team_num as teamNo 
+		select
+		airquay_user.user_no as userNo, 
+		airquay_user.user_id as userId, 
+		airquay_user.user_name as userName, 
+		airquay_user.sex, airquay_user.birth, 
+		team_info.team_name as teamName, 
+		team_info.team_country as teamCountry, 
+		team_info.team_num as teamNo 
+		
 		from airquay.airquay_user airquay_user 
 		left join airquay.team_info team_info on team_info.team_num = airquay_user.team_num
+		
 		where airquay_user.user_id = '${userId}' and airquay_user.user_pw = '${userPw}'
 	</select>	
 	
 	<update id="setRaceStart" parameterType="com.airquay.rowing.vo.main">
-		update raceinfo set check_onoff='${checkOnoff}';
+		update raceinfo set 
+		check_onoff='${checkOnoff}';
 	</update>
 	
 	<update id="pastTimeSave" parameterType="com.airquay.rowing.vo.main">
-		update isOn set pastHour='${pastHour}', pastMinute='${pastMinute}', pastSecond='${pastSecond}', pastMiliSecond='${pastMiliSecond}';	
+		update isOn set 
+		pastHour='${pastHour}', 
+		pastMinute='${pastMinute}', 
+		pastSecond='${pastSecond}', 
+		pastMiliSecond='${pastMiliSecond}';	
 	</update>
 	
 </mapper>

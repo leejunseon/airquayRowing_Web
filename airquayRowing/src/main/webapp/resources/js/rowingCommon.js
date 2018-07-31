@@ -35,6 +35,10 @@ var common={
 					console.log("data = "+data)
 					common.onOffinish_timer(data);
 				}
+				else{//onoff가 0이면
+					console.log("data = "+data)
+					common.onOffinish_timer(data);
+				}
 			},
 			error : function(data){
 			}
@@ -134,12 +138,14 @@ var common={
 			data : json_data,
 			dataType : 'json',
 			success : function(data){
+				console.log("getRaceInfo Success")
 				if(data.length>0){
 					raceInfo = data;
 					common.dispRaceList();
 				}
 			},
 			error : function(data){
+				console.log("getRaceInfo error")
 			}
 		});
 	},
@@ -156,6 +162,7 @@ var common={
 			data : json_data,
 			dataType : 'json',
 			success : function(data){
+				console.log("getBowInfo success")
 				if(data.length>0){
 					bowInfo = data;
 					common.dispBowList();
@@ -169,6 +176,7 @@ var common={
 				}
 			},
 			error : function(data){
+				console.log("getBowInfo error")
 			}
 		});
 	},
@@ -278,8 +286,8 @@ var common={
 	stop : function(){
 		console.log("stop")
 		clearInterval(stopwatch);
-		$("#status").val("경기종료");
-		$("#status").css("background-color", "#969696");
+		$("#raceStatus").text("경기종료");
+		$("#raceStatus").css("background-color", "#969696");
 	},
 	
 	PastTimeReceive : function(){
