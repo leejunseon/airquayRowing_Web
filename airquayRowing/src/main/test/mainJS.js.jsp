@@ -1,4 +1,4 @@
- 		var startTime; // starting time
+ 		var start_time; // starting time
                 var stopwatch; // timer ID
                 var output; //  output string
                 var count; // number of record
@@ -52,7 +52,7 @@
 
                 function start() {
                         var now = new Date();
-                        startTime = now.getTime();
+                        start_time = now.getTime();
                         stopwatch = window.setInterval(process, 1);
                         count = 0;
                 }
@@ -64,7 +64,7 @@
                 function process() {
                         var now = new Date();
                         var nowTime = now.getTime();
-                        var time = nowTime - startTime;
+                        var time = nowTime - start_time;
 			showTime(time);
                 }
 

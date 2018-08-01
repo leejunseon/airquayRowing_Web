@@ -19,7 +19,7 @@ pageEncoding="UTF-8"%>
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String hutPosition = null;
-		String raceNum = null;
+		String race_num = null;
 		String bowNum = null;
 		String hour = null;
 		String minute=null;
@@ -35,14 +35,14 @@ pageEncoding="UTF-8"%>
 			second= request.getParameter("SECOND");
 			milisecond= request.getParameter("MILISECOND");
 			bowNum= request.getParameter("BOWNUM");
-			raceNum= request.getParameter("RACENUM");
+			race_num= request.getParameter("race_num");
 			conn = DriverManager.getConnection(url, "root", "airquay1!");
 			out.print(second);
 			if(hutPosition.equals("500m"))
 			{
 				String sql = "insert into 500m values(?,?,?,?,?,?);";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, raceNum);
+				pstmt.setString(1, race_num);
 				pstmt.setString(2, bowNum);
 				pstmt.setString(3, hour);
 				pstmt.setString(4, minute);
@@ -53,7 +53,7 @@ pageEncoding="UTF-8"%>
 			{
 				String sql = "insert into 1000m values(?,?,?,?,?,?);";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, raceNum);
+				pstmt.setString(1, race_num);
 				pstmt.setString(2, bowNum);
 				pstmt.setString(3, hour);
 				pstmt.setString(4, minute);
@@ -64,7 +64,7 @@ pageEncoding="UTF-8"%>
 			{
 				String sql = "insert into 1500m values(?,?,?,?,?,?);";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, raceNum);
+				pstmt.setString(1, race_num);
 				pstmt.setString(2, bowNum);
 				pstmt.setString(3, hour);
 				pstmt.setString(4, minute);
@@ -75,7 +75,7 @@ pageEncoding="UTF-8"%>
 			{
 				String sql = "insert into 2000m values(?,?,?,?,?,?);";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, raceNum);
+				pstmt.setString(1, race_num);
 				pstmt.setString(2, bowNum);
 				pstmt.setString(3, hour);
 				pstmt.setString(4, minute);
@@ -98,7 +98,7 @@ pageEncoding="UTF-8"%>
                 String dbPwd = "airquay1!";
 
                 conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPwd);
-                pstmt = conn.prepareStatement("select * from 500m where raceNum=? and bowNum=2;");
+                pstmt = conn.prepareStatement("select * from 500m where race_num=? and bowNum=2;");
                 pstmt.setString(1, "5");
                 rs = pstmt.executeQuery();
                 while(rs.next()){

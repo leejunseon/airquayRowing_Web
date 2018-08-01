@@ -16,9 +16,9 @@ public class mainDaoImpl  implements mainDAO{
 	private String mapper = "mapper.main.";
 	
 	@Override
-	public Integer raceStartPoling(String raceNum) {
+	public Integer raceStartPoling(String race_num) {
 		// TODO Auto-generated method stub
-		Integer startYn = sqlSession.selectOne(mapper+"raceStartPoling", raceNum);
+		Integer startYn = sqlSession.selectOne(mapper+"raceStartPoling", race_num);
 		return startYn;
 	}
 
@@ -76,6 +76,12 @@ public class mainDaoImpl  implements mainDAO{
 	public void pastTimeSave(main main) {
 		// TODO Auto-generated method stub
 		sqlSession.update(mapper+"pastTimeSave",main);
+	}
+
+	@Override
+	public void startTimeSend(main main) {
+		// TODO Auto-generated method stub
+		sqlSession.update(mapper+"startTimeSend",main);
 	}
 
 }

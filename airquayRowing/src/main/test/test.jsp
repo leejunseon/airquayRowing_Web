@@ -29,7 +29,7 @@
           String[] record500=new String[24];
           int index=0;
           conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPwd);
-          pstmt = conn.prepareStatement("select * from 500m where raceNum=?;");
+          pstmt = conn.prepareStatement("select * from 500m where race_num=?;");
           pstmt.setString(1, "5");
           rs = pstmt.executeQuery();
           while(rs.next()){

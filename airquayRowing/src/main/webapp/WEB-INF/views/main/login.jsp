@@ -5,13 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Airquay rowing management system</title>
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=1">
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingLogin.css?ver=1">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=1">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=2">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingLogin.css?ver=2">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=2">
 
-<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=1"></script>
-<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=1"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=1"></script>
+<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=2"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=2"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=2"></script>
 <script type="text/javascript">
 var loginCheck;
 
@@ -40,8 +40,8 @@ function dispLoginPage(){
 	}
 }
 function login(){
-	var json_data = "userId="+($("#userId").val());
-		json_data += "&userPw="+($("#userPw").val());
+	var json_data = "user_id="+($("#user_id").val());
+		json_data += "&user_pw="+($("#user_pw").val());
 	var url = 'http://localhost:8080/airquayRowing/login';
 	console.log("login")
 	$.ajax({
@@ -85,11 +85,11 @@ function resultLogin(data){
 				<div style="float: left; width: 65%;">
 					<div style="float: left; width: 100%; height: 50px;">
 						<div class="loginLabel">ID</div>
-						<div class="inputText"><input id="userId" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+						<div class="inputText"><input id="user_id" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 					<div style="float: left; width: 100%; height: 50px;">
 						<div class="loginLabel">PW</div>
-						<div class="inputText"><input id="userPw" type="password" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+						<div class="inputText"><input id="user_pw" type="password" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 				</div>
 				<div style="float: left;" onclick="javascript:login();">

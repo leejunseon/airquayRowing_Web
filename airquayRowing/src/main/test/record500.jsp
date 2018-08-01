@@ -5,7 +5,7 @@
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String raceNum = null;
+        String race_num = null;
         String bowNum = null;
         String record = null;
 
@@ -14,11 +14,11 @@
         Class.forName("com.mysql.jdbc.Driver");
         record= request.getParameter("RECORD");
         bowNum= request.getParameter("BOWNUM");
-        raceNum= request.getParameter("RACENUM");
+        race_num= request.getParameter("race_num");
         conn = DriverManager.getConnection(url, "root", "airquay1!");
         String sql = "insert into record500 values(?,?,?);";
         pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1, raceNum);
+        pstmt.setString(1, race_num);
         pstmt.setString(2, bowNum);
         pstmt.setString(3, record);
         pstmt.executeUpdate();

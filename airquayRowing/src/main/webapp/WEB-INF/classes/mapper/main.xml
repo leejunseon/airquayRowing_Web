@@ -10,9 +10,9 @@
 		select pastHour, pastMinute, pastSecond, pastMiliSecond from isOn;
 	</select>
 	<select id="getRankList"  parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
-		select t.raceNum, t.bowNum, raceinfo.raceDate, concat(t.arriveHour,':', t.arriveMinute,':', t.arriveSecond,':', t.arriveMiliSecond) as arriveTime from rowing.${tableType} t
-		left join rowing.raceinfo raceinfo on raceinfo.raceNum = t.raceNum
-		where t.raceNum = ${raceNum} and raceinfo.raceDate = '${raceDate}' order by arriveTime;
-<!-- 		select raceNum, bowNum, concat(arriveHour,':', arriveMinute,':', arriveSecond,':', arriveMiliSecond) as arriveTime from tableType order by arriveTime; -->
+		select t.race_num, t.bowNum, raceinfo.raceDate, concat(t.arriveHour,':', t.arriveMinute,':', t.arriveSecond,':', t.arriveMiliSecond) as arriveTime from rowing.${tableType} t
+		left join rowing.raceinfo raceinfo on raceinfo.race_num = t.race_num
+		where t.race_num = ${race_num} and raceinfo.raceDate = '${raceDate}' order by arriveTime;
+<!-- 		select race_num, bowNum, concat(arriveHour,':', arriveMinute,':', arriveSecond,':', arriveMiliSecond) as arriveTime from tableType order by arriveTime; -->
 	</select>
 </mapper>

@@ -12,9 +12,9 @@ public class rowingService {
 	@Autowired
 	private com.airquay.rowing.dao.mainDAO mainDAO;
 
-	public Integer raceStartPoling(String raceNum) {
+	public Integer raceStartPoling(String race_num) {
 		// TODO Auto-generated method stub
-		Integer startYn = mainDAO.raceStartPoling(raceNum);
+		Integer startYn = mainDAO.raceStartPoling(race_num);
 		return startYn;
 	}
 
@@ -72,6 +72,13 @@ public class rowingService {
 		
 		Boolean result=false;
 		mainDAO.pastTimeSave(main);
+		return result;
+	}
+
+	public Boolean startTimeSend(main main) {
+		// TODO Auto-generated method stub
+		Boolean result=false;
+		mainDAO.startTimeSend(main);
 		return result;
 	}
 

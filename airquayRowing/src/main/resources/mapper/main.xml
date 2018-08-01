@@ -6,7 +6,7 @@
 	<select id="raceStartPoling" parameterType="String" resultType="int">
 		select raceinfo.check_onoff 
 		
-		from airquay.raceinfo raceinfo 
+		from airquay.raceinfo
 		
 		where raceinfo.race_num = '${value}';
 	</select>
@@ -19,57 +19,58 @@
 	
 	<select id="getRaceInfo" parameterType="String" resultType="com.airquay.rowing.vo.main">
 		select 
-		raceinfo.race_num as raceNum, 
-		raceinfo.day_race_num as dayRaceNum, 
-		raceinfo.event_name as eventName, 
-		raceinfo.race_date as raceDate,
-		raceinfo.round_type as roundType, 
-		raceinfo.start_time as startTime, 
-		raceinfo.stop_time as stopTime, 
-		raceinfo.check_onoff as checkOnoff,
+		raceinfo.race_num, 
+		raceinfo.day_race_num, 
+		raceinfo.event_name, 
+		raceinfo.race_date,
+		raceinfo.round_type, 
+		raceinfo.start_time, 
+		raceinfo.stop_time, 
+		raceinfo.check_onoff,
 		raceinfo.progression 
 		
-		from airquay.raceinfo raceinfo
+		from airquay.raceinfo
 		
 		where raceinfo.race_date = '${value}';
 	</select>
 	
 	<select id="getBowInfo" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
 		select 
-		rec.record_num as recordNum, 
-		rec.race_num as raceNum, 
-		rec.team_num as teamNum, 
+		rec.record_num, 
+		rec.race_num, 
+		rec.team_num, 
 		rec.rank, 
-		rec.bow_num as bowNum, 
-		rec.500_time as Fivehundred_Time, 
-		rec.1000_time as Thousand_Time, 
-		rec.1500_time as ThousandFivehundred_Time, 
-		rec.finish_time as finishTime,
-		ti.team_name as teamName, 
-		ti.team_country as teamCountry
+		rec.bow_num, 
+		rec.500_time as fivehundred_time, 
+		rec.1000_time as thousand_time, 
+		rec.1500_time as thousandfivehundred_time, 
+		rec.finish_time,
+		ti.team_name, 
+		ti.team_country
 		
 		from airquay.record rec 
 		left join airquay.team_info ti on ti.team_num = rec.team_num
 		
-		where rec.race_num = '{raceNum}'
-		order by ${orderType}
+		where rec.race_num = '{race_num}'
+		order by ${orderType};
 	</select>
 	
 	<select id="getRankList"  parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
 		select 
-		t.raceNum, t.bowNum, 
+		t.race_num, 
+		t.bowNum, 
 		bi.countryName, 
 		raceinfo.raceDate, 
 		concat(t.arriveHour,':', t.arriveMinute,':', t.arriveSecond,':', t.arriveMiliSecond) as arriveTime 
 		
 		from rowing.${tableType} t
-		left join rowing.raceinfo raceinfo on raceinfo.raceNum = t.raceNum
+		left join rowing.raceinfo raceinfo on raceinfo.race_num = t.race_num
 		left join rowing.boatinfo bi on t.bowNum = bi.bowNum
 		
-		where t.raceNum = ${raceNum} 
+		where t.race_num = ${race_num} 
 		and raceinfo.raceDate = t.raceDate
 		and t.raceDate = bi.raceDate
-		and t.raceNum = bi.raceNum 
+		and t.race_num = bi.race_num 
 		and raceinfo.raceDate = '${raceDate}' 
 		
 		order by arriveTime;
@@ -80,29 +81,30 @@
 		
 		from airquay.airquay_user airquay_user 
 		
-		where airquay_user.user_id = '${userId}' 
-		and airquay_user.user_pw = '${userPw}'
+		where airquay_user.user_id = '${user_id}' 
+		and airquay_user.user_pw = '${user_pw}'
 	</select>
 	
 	<select id="getUserInfo" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
 		select
-		airquay_user.user_no as userNo, 
-		airquay_user.user_id as userId, 
-		airquay_user.user_name as userName, 
-		airquay_user.sex, airquay_user.birth, 
-		team_info.team_name as teamName, 
-		team_info.team_country as teamCountry, 
-		team_info.team_num as teamNo 
+		airquay_user.user_no, 
+		airquay_user.user_id, 
+		airquay_user.user_name, 
+		airquay_user.sex, 
+		airquay_user.birth, 
+		team_info.team_name, 
+		team_info.team_country, 
+		team_info.team_num
 		
 		from airquay.airquay_user airquay_user 
 		left join airquay.team_info team_info on team_info.team_num = airquay_user.team_num
 		
-		where airquay_user.user_id = '${userId}' and airquay_user.user_pw = '${userPw}'
+		where airquay_user.user_id = '${user_id}' and airquay_user.user_pw = '${user_pw}'
 	</select>	
 	
 	<update id="setRaceStart" parameterType="com.airquay.rowing.vo.main">
 		update raceinfo set 
-		check_onoff='${checkOnoff}';
+		check_onoff='${check_onoff}';
 	</update>
 	
 	<update id="pastTimeSave" parameterType="com.airquay.rowing.vo.main">
@@ -111,6 +113,14 @@
 		pastMinute='${pastMinute}', 
 		pastSecond='${pastSecond}', 
 		pastMiliSecond='${pastMiliSecond}';	
+	</update>
+	
+	<update id="startTimeSend" parameterType="com.airquay.rowing.vo.main">
+		update raceinfo set
+		
+		start_time='${start_time}'
+		
+		where raceinfo.race_num='${race_num}';
 	</update>
 	
 </mapper>

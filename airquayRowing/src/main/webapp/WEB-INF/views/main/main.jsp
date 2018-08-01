@@ -5,16 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Rowing Airquay</title>
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=1">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=1">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=2">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=2">
 
-<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=1"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=1"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=1"></script>
+<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=2"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=2"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=2"></script>
 <script type="text/javascript">
 	var raceInfo;
 	var bowInfo;
-	var startTime; // starting time
+	var start_time; // starting time
 	var stopwatch; // timer ID
 	var output; //  output string
 	var count; // number of record
@@ -48,7 +48,7 @@ function realTimeClock() {
 function dateInput(){
 	var date = getTimeStamp();
 	$("#toDay").text(date);
-	common.getRaceInfo();
+	//common.getRaceInfo();
 }
 function getDateStamp() {
 	var d = new Date();
@@ -82,7 +82,7 @@ function leadingZeros(n, digits) {
 <body id="bodyArea" style="margin-top: 25px; min-width: 1680px;">
     <div class="container" style="width: 100%; height: 35px; line-height: 35px; font-size: 25px; margin-top: 10px; float: left;">
     	<div style="float: left; height: 35px; background-color: white; border: 1px solid;">
-    		<select id="infrontRaceNum" style="font-size: 25px; background-color: white; color: black; margin-top: 3px; border: 0px;" onchange="javascript:common.dispRaceInfo(); common.getBowInfo();">
+    		<select id="infrontrace_num" style="font-size: 25px; background-color: white; color: black; margin-top: 3px; border: 0px;" onchange="javascript:common.dispRaceInfo(); common.getBowInfo();">
     			<option value="-">No data</option>
     		</select>
     	</div>
@@ -143,11 +143,11 @@ function leadingZeros(n, digits) {
 		    	<div style="width: 100%; float: left; font-size: 23px; color: white; margin-left: 47px; font-weight: bold;">
 		    		<div style="float: left;">
 			    		<div style="float: left;">Start time : </div>
-		    			<div style="float: left; min-width: 60px; margin-left: 5px;" id="raceStartTime"></div>
+		    			<div style="float: left; min-width: 60px; margin-left: 5px;" id="racestart_time"></div>
 		    		</div>
 		    		<div style="float: left; margin-left: 10px;">
 			    		<div style="float: left;">/ Event : </div>
-		    			<div style="float: left; min-width: 60px; margin-left: 5px;" id="eventName"></div>
+		    			<div style="float: left; min-width: 60px; margin-left: 5px;" id="event_name"></div>
 		    		</div>
 		    		<div style="float: left; margin-left: 10px;">
 			    		<div style="float: left;">/ Round : </div>
@@ -160,6 +160,10 @@ function leadingZeros(n, digits) {
 		    		<div style="float: left;">Progression : </div>
 		    		<div id="prog" style="float: left; margin-left: 5px;"></div>
 	    		</div>
+	    		<div style="float: left; margin-left: 10px;">
+			    	<div style="float: left;">/ Finish time : </div>
+		    		<div style="float: left; min-width: 60px; margin-left: 5px;" id="racefinish_time"></div>
+		    	</div>
 	    	</div>
 		</div>
     	<div style="margin-bottom: 30px;">

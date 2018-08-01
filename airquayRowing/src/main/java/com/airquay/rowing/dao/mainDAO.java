@@ -6,7 +6,7 @@ import com.airquay.rowing.vo.main;
 
 public interface mainDAO {
 
-	Integer raceStartPoling(String raceNum);
+	Integer raceStartPoling(String race_num);
 
 	List passTimer();
 
@@ -23,5 +23,7 @@ public interface mainDAO {
 	void setRaceStart(main main);
 
 	void pastTimeSave(main main);
+
+	void startTimeSend(main main);
 	
 }

@@ -11,7 +11,7 @@ ResultSet rs = null;
 // JSONObject sObject = new JSONObject();
 // JSONArray sArray = new JSONArray();
 // JSONObject sMain = new JSONObject();
-String raceNum = null;
+String race_num = null;
 String raceDate=null;
 java.util.Date today = new java.util.Date();
 // SimpleDateFormat fm1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -22,7 +22,7 @@ try{
 String url = "jdbc:mysql://localhost:3306/airquay";
 Class.forName("com.mysql.jdbc.Driver");
 conn = DriverManager.getConnection(url, "root", "airquay1!");
-String sql = "select raceDate from raceInfo where raceNum=1;";
+String sql = "select raceDate from raceInfo where race_num=1;";
 pstmt = conn.prepareStatement(sql);
 rs = pstmt.executeQuery();
 rs.last();

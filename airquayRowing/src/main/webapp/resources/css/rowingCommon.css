@@ -90,7 +90,7 @@ body {
         box-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.2);
 }
 
-#infrontRaceNum {
+#infrontrace_num {
         color: #FFFFFF;
         font-size: 30pt;
         font-weight: bold;
@@ -98,7 +98,7 @@ body {
         border: none;
 }
 
-#raceNumber {
+#race_number {
         color: #FFFFFF;
         font-size: 30pt;
         font-weight: bold;
