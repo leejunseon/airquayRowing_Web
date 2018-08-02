@@ -123,4 +123,20 @@
 		where raceinfo.race_num='${race_num}';
 	</update>
 	
+	<update id="stopTimeSend" parameterType="com.airquay.rowing.vo.main">
+		update raceinfo set
+		
+		stop_time='${stop_time}'
+		
+		where raceinfo.race_num='${race_num}';
+	</update>
+	
+	<select id="getRaceNum" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select race_date
+		
+		from raceInfo 
+		
+		where race_num=1;
+	</select>	
+	
 </mapper>

@@ -82,5 +82,18 @@ public class rowingService {
 		return result;
 	}
 
+	public Boolean stopTimeSend(main main) {
+		// TODO Auto-generated method stub
+		Boolean result=false;
+		mainDAO.stopTimeSend(main);
+		return result;
+	}
+
+	public List<List> getRaceNum(main main) {
+		// TODO Auto-generated method stub
+		List raceDate=mainDAO.getRaceNum(main);
+		return raceDate;
+	}
+
 
 }

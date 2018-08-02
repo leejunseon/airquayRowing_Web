@@ -1,10 +1,11 @@
 var common={
-		
+	
+	//onoff값 확인
 	RacePoling : function(){
 		console.log("Race poling, raceInfo : "+raceInfo)
 		if(raceInfo != undefined){
 			var json_data = "race_num="+($("#infrontrace_num").val()+1);
-			var url = 'http://localhost:8080/airquayRowing/main/raceStartPoling';//onoff 값 확인
+			var url = 'http://localhost:8080/airquayRowing/main/raceStartPoling';
 			$.ajax({
 				url:url,
 				type : 'GET',
@@ -30,25 +31,20 @@ var common={
 						console.log("data = "+data)
 						common.onOffinish_timer(data);
 					}
-					else if(data==4){
+					else if(data==4){//reset, 다음경기
 						console.log("data="+data)
 						common.refresh();
 					}
-					
 					else{//onoff가 0이면
 						console.log("data = "+data)
+						if(flag!=0)
+							common.finishtimeSend();
 						common.onOffinish_timer(data);
 					}
 				},
 				error : function(data){
 				}
 			});
-			/*console.log("poling status: "+polingStatus)
-			if(polingStatus=="start"){//경기시작 전
-				common.startPoling();
-			}else{//경기 시작
-				common.beforeStartPolling();
-			}*/
 		}else{
 			common.getRaceInfo();
 		}
@@ -56,7 +52,7 @@ var common={
 	
 	//경기 시작시간 데이터베이스에 업로드
 	starttimeSend : function(){
-		console.log("timeSend")
+		console.log("starttimeSend")
 		var json_data="start_time="+($("#time").text())+"&";
 		json_data+="race_num="+($("#infrontrace_num").val()+1);
 		
@@ -77,7 +73,28 @@ var common={
 		});
 	},
 	
-	
+	//경기 끝난 시간 데이터베이스에 업로드
+	finishtimeSend : function(){
+		console.log("finishtimeSend")
+		var json_data="stop_time="+($("#time").text())+"&";
+		json_data+="race_num="+($("#infrontrace_num").val()+1);
+		
+		var url = 'http://localhost:8080/airquayRowing/main/finishTimeSend';
+		$.ajax({
+			url:url,
+			type : 'GET',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data : json_data,
+			dataType : 'json',
+			success : function(data){
+				$("#racefinish_time").text($("#time").text());
+			},
+			error : function(data){
+			}
+		});
+	},
 	
 	//bowinfo 가져옴
 	beforeStartPolling : function(){
@@ -266,7 +283,7 @@ var common={
 		if(raceInfo[race_num].stop_time==null){
 			$("#racefinish_time").text("Not finished yet.");
 		}else{
-			$("#racestart time").text(raceInfo[race_num].stop_time);
+			$("#racefinish_time").text(raceInfo[race_num].stop_time);
 		}
 		$("#event_name").text(raceInfo[race_num].event_name);
 		$("#roundName").text(raceInfo[race_num].round_type);
@@ -374,36 +391,4 @@ var common={
 			}
 		});
 	},
-	
-	//onoff값 체크
-	/*startPoling : function(){
-		console.log("startPoling");
-		var json_data = "race_num="+($("#infrontrace_num").val()+1);
-		var url = 'http://localhost:8080/airquayRowing/main/raceStartPoling';//onoff 값 확인
-		$.ajax({
-			url:url,
-			type : 'GET',
-			cache: false,
-			contentType: false,
-			processData: false,
-			data : json_data,
-			dataType : 'json',
-			success : function(data){
-				if(data==1){//onoff가 1이면
-					console.log("data = "+data)
-					common.onOffinish_timer(data);
-					polingStatus = "500m";
-				}else if(data==2){//onoff가 2이면
-					console.log("data = "+data)
-					common.onOffinish_timer(data);
-				}
-				else{//onoff가 0이면
-					console.log("data = "+data)
-					common.onOffinish_timer(data);
-				}
-			},
-			error : function(data){
-			}
-		});
-	},*/
 }

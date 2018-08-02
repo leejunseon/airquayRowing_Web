@@ -84,4 +84,17 @@ public class mainDaoImpl  implements mainDAO{
 		sqlSession.update(mapper+"startTimeSend",main);
 	}
 
+	@Override
+	public void stopTimeSend(main main) {
+		// TODO Auto-generated method stub
+		sqlSession.update(mapper+"stopTimeSend",main);
+	}
+
+	@Override
+	public List getRaceNum(main main){
+		// TODO Auto-generated method stub
+		List raceDate=sqlSession.selectList(mapper+"getRaceNum",main);
+		return raceDate;
+	}
+
 }

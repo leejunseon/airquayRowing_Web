@@ -23,6 +23,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.airquay.rowing.vo.main;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+
 @Controller
 public class MainController {
 	
@@ -159,4 +164,37 @@ public class MainController {
 		return result;
 	}
 	
+	@RequestMapping(value = "/main/finishTimeSend", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody Boolean finishTimeSend(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		Boolean result = false;
+		String stop_time=request.getParameter("stop_time");
+		String race_num=request.getParameter("race_num");
+		main main=new main();
+		main.setStop_time(stop_time);
+		main.setRace_num(Integer.parseInt(race_num));
+		result=rowingService.stopTimeSend(main);
+		return result;
+	}
+	
+	@RequestMapping(value = "/main/getRaceNum", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody JSONObject getRaceNum(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session){
+		String CurrentDate = request.getParameter("raceDate");
+		main main=new main();
+		JSONObject sObject = new JSONObject();
+		JSONArray sArray = new JSONArray();
+		JSONObject sMain = new JSONObject();
+		main.setRace_date(CurrentDate);
+		List <List> raceDate=rowingService.getRaceNum(main);
+		if(CurrentDate.equals(raceDate.get(0))){
+			 sObject.put("key", "ok");
+			 sArray.add(0, sObject);
+			 sMain.put("dataSend", sArray);
+		}
+		else{
+			 sObject.put("key", "no");
+			 sArray.add(0, sObject);
+			 sMain.put("dataSend", sArray);
+		}
+		return sMain;
+	}
 }

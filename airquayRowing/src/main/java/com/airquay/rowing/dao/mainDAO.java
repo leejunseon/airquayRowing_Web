@@ -25,5 +25,9 @@ public interface mainDAO {
 	void pastTimeSave(main main);
 
 	void startTimeSend(main main);
+
+	void stopTimeSend(main main);
+
+	List getRaceNum(main main);
 	
 }
