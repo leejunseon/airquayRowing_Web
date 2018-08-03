@@ -4,7 +4,7 @@ var common={
 	RacePoling : function(){
 		console.log("Race poling, raceInfo : "+raceInfo)
 		if(raceInfo != undefined){
-			var json_data = "race_num="+($("#infrontrace_num").val()+1);
+			var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
 			var url = 'http://localhost:8080/airquayRowing/main/raceStartPoling';
 			$.ajax({
 				url:url,

@@ -5,13 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Rowing Airquay</title>
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=1">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=1">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=2">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=2">
 
-<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=1"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=1"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=1"></script>
+<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=2"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=2"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=2"></script>
 <script type="text/javascript">
+	var raceList;
 	var raceInfo;
 	var bowInfo;
 	var start_time; // starting time
@@ -28,6 +29,7 @@
 		doResize();
 		dateInput();//날짜
 		common.getRaceInfo();
+		raceList = ${raceList};
 		setInterval(common.RacePoling , 1000);//서버의 타이머 켜짐의 유무를 나타내는 값인 isOn 테이블의 onOrOff값이 1이면 서버의 타이머도 시작
 // 		$( "#datepicker" ).datepicker({
 // 			dateFormat: "yy-mm-dd",

@@ -89,11 +89,14 @@ public class rowingService {
 		return result;
 	}
 
-	public List<List> getRaceNum(main main) {
+
+	public List<Object> getRaceList() {
 		// TODO Auto-generated method stub
-		List raceDate=mainDAO.getRaceNum(main);
-		return raceDate;
+		List raceList=mainDAO.getRaceList();
+		return raceList;
 	}
+
+
 
 
 }

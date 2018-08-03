@@ -91,10 +91,10 @@ public class mainDaoImpl  implements mainDAO{
 	}
 
 	@Override
-	public List getRaceNum(main main){
+	public List getRaceList() {
 		// TODO Auto-generated method stub
-		List raceDate=sqlSession.selectList(mapper+"getRaceNum",main);
-		return raceDate;
+		List raceList=sqlSession.selectList(mapper+"getRaceList");
+		return raceList;
 	}
 
 }

@@ -2,6 +2,7 @@ package com.airquay.rowing.controller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -50,6 +51,9 @@ public class MainController {
 	
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String dashboard(Model model, HttpServletRequest request, HttpServletResponse response) {
+		List<Object> raceList = new ArrayList<Object>();
+		raceList = rowingService.getRaceList();
+		model.addAttribute("raceList", raceList);
 		return "main/main";//main폴더의 main.jsp로 ㄱㄱ
 	}
 	
@@ -176,7 +180,8 @@ public class MainController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/main/getRaceNum", method = { RequestMethod.GET, RequestMethod.POST })
+	/*	
+  	@RequestMapping(value = "/main/getRaceNum", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody JSONObject getRaceNum(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session){
 		String CurrentDate = request.getParameter("raceDate");
 		main main=new main();
@@ -197,4 +202,6 @@ public class MainController {
 		}
 		return sMain;
 	}
+	*/
+	
 }

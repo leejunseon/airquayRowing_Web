@@ -28,6 +28,6 @@ public interface mainDAO {
 
 	void stopTimeSend(main main);
 
-	List getRaceNum(main main);
+	List getRaceList();
 	
 }
