@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Rowing Airquay</title>
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=2">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=2">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=1">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=1">
 
-<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=2"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=2"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=2"></script>
+<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=1"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=1"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=1"></script>
 <script type="text/javascript">
 	var raceList;
 	var raceInfo;
@@ -316,27 +316,27 @@ function leadingZeros(n, digits) {
 	                </tr>
 	                <tr>
 	                    <td class="bow_num">1</td>
-	                    <td id="rank1TeamName">-</td>
+	                    <td id="1rankTeamName">-</td>
 	                </tr>
 	                <tr>
 	                    <td class="bow_num">2</td>
-	                    <td id="rank2TeamName">-</td>
+	                    <td id="2rankTeamName">-</td>
 	                </tr>
 	                <tr>
 	                    <td class="bow_num">3</td>
-	                    <td id="rank3TeamName">-</td>
+	                    <td id="3rankTeamName">-</td>
 	                </tr>
 	                <tr>
 	                    <td class="bow_num">4</td>
-	                    <td id="rank4TeamName">-</td>
+	                    <td id="4rankTeamName">-</td>
 	                </tr>
 	                <tr>
 	                    <td class="bow_num">5</td>
-	                    <td id="rank5TeamName">-</td>
+	                    <td id="5rankTeamName">-</td>
 	                </tr>
 	                <tr>
 	                    <td class="bow_num">6</td>
-	                    <td id="rank6TeamName">-</td>
+	                    <td id="6rankTeamName">-</td>
 	                </tr>
 	            </table>
 	        </div>

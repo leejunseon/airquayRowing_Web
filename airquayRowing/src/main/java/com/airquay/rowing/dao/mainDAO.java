@@ -8,7 +8,7 @@ public interface mainDAO {
 
 	Integer raceStartPoling(String race_num);
 
-	List passTimer();
+	List passTimer(main main);
 
 	List getRank(main main);
 
@@ -29,5 +29,13 @@ public interface mainDAO {
 	void stopTimeSend(main main);
 
 	List getRaceList();
+
+	List getStartTime(main main);
+
+	List getFinishTime(main main);
+
+	String getRaceNum(String raceNum);
+
+	void recordUpload(main main);
 	
 }

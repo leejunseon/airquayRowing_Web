@@ -23,10 +23,10 @@ public class mainDaoImpl  implements mainDAO{
 	}
 
 	@Override
-	public List passTimer() {
+	public List passTimer(main main) {
 		// TODO Auto-generated method stub
 		
-		List passTimer = sqlSession.selectList(mapper+"getPassTimer");
+		List passTimer = sqlSession.selectList(mapper+"getPassTimer",main);
 		return passTimer;
 	}
 
@@ -95,6 +95,40 @@ public class mainDaoImpl  implements mainDAO{
 		// TODO Auto-generated method stub
 		List raceList=sqlSession.selectList(mapper+"getRaceList");
 		return raceList;
+	}
+
+	@Override
+	public List getStartTime(main main) {
+		// TODO Auto-generated method stub
+		List StartTime=sqlSession.selectList(mapper+"getStartTime",main);
+		return StartTime;
+	}
+
+	@Override
+	public List getFinishTime(main main) {
+		// TODO Auto-generated method stub
+		List FinishTime = sqlSession.selectList(mapper+"getFinishTime",main);	
+		return FinishTime;
+	}
+
+	@Override
+	public String getRaceNum(String raceNum) {
+		// TODO Auto-generated method stub
+		String raceInfo=sqlSession.selectOne(mapper+"getRaceNum", raceNum);
+		return raceInfo;
+	}
+
+	@Override
+	public void recordUpload(main main) {
+		// TODO Auto-generated method stub
+		if(main.getHut().equals("500m"))
+			sqlSession.update(mapper+"recordUpload500m",main);
+		else if(main.getHut().equals("1000m"))
+			sqlSession.update(mapper+"recordUpload1000m",main);
+		else if(main.getHut().equals("1500m"))
+			sqlSession.update(mapper+"recordUpload1500m",main);
+		else if(main.getHut().equals("Final"))
+			sqlSession.update(mapper+"recordUploadFinish",main);
 	}
 
 }

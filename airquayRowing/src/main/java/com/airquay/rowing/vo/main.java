@@ -40,12 +40,15 @@ public class main {
 	//record
 	
 	private Integer record_num;
-	private Integer rank;
 	private Integer bow_num;
 	private String fivehundred_time;
+	private Integer fivehundred_rank;
 	private String thousand_time;
+	private Integer thousand_rank;
 	private String thousandfivehundred_time;
+	private Integer thousandfivehundred_rank;
 	private String finish_time;
+	private Integer finish_rank;
 	
 	//team_info
 	
@@ -54,9 +57,29 @@ public class main {
 	private String team_country;
 	
 	
-	private String orderType;
+	private String Hut;	
+	private String LabTime;
+	private Integer rank;
 	
 	
+	public Integer getRank() {
+		return rank;
+	}
+	public void setRank(Integer rank) {
+		this.rank = rank;
+	}
+	public String getLabTime() {
+		return LabTime;
+	}
+	public void setLabTime(String labTime) {
+		LabTime = labTime;
+	}
+	public String getHut() {
+		return Hut;
+	}
+	public void setHut(String hut) {
+		Hut = hut;
+	}
 	public Integer getUser_no() {
 		return user_no;
 	}
@@ -201,12 +224,6 @@ public class main {
 	public void setRecord_num(Integer record_num) {
 		this.record_num = record_num;
 	}
-	public Integer getRank() {
-		return rank;
-	}
-	public void setRank(Integer rank) {
-		this.rank = rank;
-	}
 	public Integer getBow_num() {
 		return bow_num;
 	}
@@ -255,11 +272,28 @@ public class main {
 	public void setTeam_country(String team_country) {
 		this.team_country = team_country;
 	}
-	public String getOrderType() {
-		return orderType;
+	public Integer getFivehundred_rank() {
+		return fivehundred_rank;
 	}
-	public void setOrderType(String orderType) {
-		this.orderType = orderType;
+	public void setFivehundred_rank(Integer fivehundred_rank) {
+		this.fivehundred_rank = fivehundred_rank;
 	}
-	
+	public Integer getThousand_rank() {
+		return thousand_rank;
+	}
+	public void setThousand_rank(Integer thousand_rank) {
+		this.thousand_rank = thousand_rank;
+	}
+	public Integer getThousandfivehundred_rank() {
+		return thousandfivehundred_rank;
+	}
+	public void setThousandfivehundred_rank(Integer thousandfivehundred_rank) {
+		this.thousandfivehundred_rank = thousandfivehundred_rank;
+	}
+	public Integer getFinish_rank() {
+		return finish_rank;
+	}
+	public void setFinish_rank(Integer finish_rank) {
+		this.finish_rank = finish_rank;
+	}
 }

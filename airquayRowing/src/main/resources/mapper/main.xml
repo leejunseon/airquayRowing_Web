@@ -14,7 +14,9 @@
 	<select id="getPassTimer"  resultType="com.airquay.rowing.vo.main">
 		select pastHour, pastMinute, pastSecond, pastMiliSecond 
 		
-		from isOn;
+		from isOn
+		
+		where isOn.race_num='${race_num}';
 	</select>
 	
 	<select id="getRaceInfo" parameterType="String" resultType="com.airquay.rowing.vo.main">
@@ -39,22 +41,24 @@
 		rec.record_num, 
 		rec.race_num, 
 		rec.team_num, 
-		rec.rank, 
-		rec.bow_num, 
-		rec.500_time as fivehundred_time, 
+		rec.bow_num,
+		rec.500_time as fivehundred_time,
+		rec.500_rank as fivehundred_rank,
 		rec.1000_time as thousand_time, 
-		rec.1500_time as thousandfivehundred_time, 
+		rec.1000_rank as thousand_rank,
+		rec.1500_time as thousandfivehundred_time,
+		rec.1500_rank as thousandfivehundred_rank, 
 		rec.finish_time,
+		rec.finish_rank,
 		ti.team_name, 
 		ti.team_country
 		
 		from airquay.record rec 
 		left join airquay.team_info ti on ti.team_num = rec.team_num
 		
-		where rec.race_num = '{race_num}'
-		order by ${orderType};
+		where rec.race_num = '${race_num}';
 	</select>
-	
+
 	<select id="getRankList"  parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
 		select 
 		t.race_num, 
@@ -99,26 +103,35 @@
 		from airquay.airquay_user airquay_user 
 		left join airquay.team_info team_info on team_info.team_num = airquay_user.team_num
 		
-		where airquay_user.user_id = '${user_id}' and airquay_user.user_pw = '${user_pw}'
+		where 
+		airquay_user.user_id = '${user_id}' and 
+		airquay_user.user_pw = '${user_pw}'
 	</select>	
 	
 	<update id="setRaceStart" parameterType="com.airquay.rowing.vo.main">
 		update raceinfo set 
-		check_onoff='${check_onoff}';
+		
+		check_onoff='${check_onoff}'
+		
+		where raceinfo.race_num='${race_num}';
 	</update>
 	
 	<update id="pastTimeSave" parameterType="com.airquay.rowing.vo.main">
 		update isOn set 
+		
 		pastHour='${pastHour}', 
 		pastMinute='${pastMinute}', 
 		pastSecond='${pastSecond}', 
-		pastMiliSecond='${pastMiliSecond}';	
+		pastMiliSecond='${pastMiliSecond}'
+		
+		where isOn.race_num='${race_num}';
 	</update>
 	
 	<update id="startTimeSend" parameterType="com.airquay.rowing.vo.main">
 		update raceinfo set
 		
-		start_time='${start_time}'
+		start_time='${start_time}',
+		check_onoff='${check_onoff}'
 		
 		where raceinfo.race_num='${race_num}';
 	</update>
@@ -126,7 +139,8 @@
 	<update id="stopTimeSend" parameterType="com.airquay.rowing.vo.main">
 		update raceinfo set
 		
-		stop_time='${stop_time}'
+		stop_time='${stop_time}',
+		check_onoff='${check_onoff}'
 		
 		where raceinfo.race_num='${race_num}';
 	</update>
@@ -139,4 +153,71 @@
 		where ri.race_date = '2018-08-03'
 	</select>
 	
+	<select id="getStartTime" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
+		select raceinfo.start_time
+		
+		from airquay.raceinfo
+		
+		where raceinfo.race_num='${race_num}';
+	</select>
+	
+	<select id="getFinishTime" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
+		select raceinfo.stop_time
+		
+		from airquay.raceinfo
+		
+		where raceinfo.race_num='${race_num}';
+	</select>
+	
+	<select id="getRaceNum" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select raceinfo.race_date
+		from airquay.raceinfo
+		where 
+		raceinfo.race_num='${value}'
+	</select>
+	
+	<update id="recordUpload500m" parameterType="com.airquay.rowing.vo.main">		
+		update record set
+		
+		500_time='${LabTime}',
+		500_rank='${rank}'
+		
+		where
+		race_num='${race_num}' and
+		bow_num='${bow_num}'
+	</update>
+	
+	<update id="recordUpload1000m" parameterType="com.airquay.rowing.vo.main">		
+		update record set
+		
+		1000_time='${LabTime}',
+		1000_rank='${rank}'
+		
+		where
+		race_num='${race_num}' and
+		bow_num='${bow_num}'
+	</update>
+	
+	<update id="recordUpload1500m" parameterType="com.airquay.rowing.vo.main">		
+		update record set
+		
+		1500_time='${LabTime}',
+		1500_rank='${rank}'
+		
+		where
+		race_num='${race_num}' and
+		bow_num='${bow_num}'
+	</update>
+	
+	<update id="recordUploadFinish" parameterType="com.airquay.rowing.vo.main">		
+		update record set
+		
+		finish_time='${LabTime}',
+		finish_rank='${rank}'
+		
+		where
+		race_num='${race_num}' and
+		bow_num='${bow_num}'
+	</update>
+
 </mapper>

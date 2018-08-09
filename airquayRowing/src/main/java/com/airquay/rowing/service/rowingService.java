@@ -18,9 +18,9 @@ public class rowingService {
 		return startYn;
 	}
 
-	public List<List> passTimer() {
+	public List<List> passTimer(main main) {
 		// TODO Auto-generated method stub
-		List passTimer = mainDAO.passTimer();
+		List passTimer = mainDAO.passTimer(main);
 		return passTimer;
 	}
 
@@ -94,6 +94,29 @@ public class rowingService {
 		// TODO Auto-generated method stub
 		List raceList=mainDAO.getRaceList();
 		return raceList;
+	}
+
+	public List<List> getStartTime(main main) {
+		// TODO Auto-generated method stub
+		List StartTime = mainDAO.getStartTime(main);
+		return StartTime;
+	}
+
+	public List<List> getFinishTime(main main) {
+		// TODO Auto-generated method stub
+		List FinishTime=mainDAO.getFinishTime(main);
+		return FinishTime;
+	}
+
+	public String getRaceNum(String raceNum) {
+		// TODO Auto-generated method stub
+		String raceInfo=mainDAO.getRaceNum(raceNum);
+		return raceInfo;
+	}
+
+	public void recordUpload(main main) {
+		// TODO Auto-generated method stub
+		mainDAO.recordUpload(main);
 	}
 
 

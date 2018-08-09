@@ -88,6 +88,7 @@ pageEncoding="UTF-8"%>
 			e.printStackTrace();
 		}
 		%>
+		
 		$(document).ready(function(){
 			function t(){
 			<%
