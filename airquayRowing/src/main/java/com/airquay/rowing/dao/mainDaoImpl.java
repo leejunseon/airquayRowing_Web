@@ -115,6 +115,8 @@ public class mainDaoImpl  implements mainDAO{
 	public String getRaceNum(String raceNum) {
 		// TODO Auto-generated method stub
 		String raceInfo=sqlSession.selectOne(mapper+"getRaceNum", raceNum);
+		if(raceInfo!=null)
+			sqlSession.update(mapper+"updateRaceNum", raceNum);
 		return raceInfo;
 	}
 

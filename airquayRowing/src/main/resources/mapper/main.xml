@@ -176,6 +176,12 @@
 		raceinfo.race_num='${value}'
 	</select>
 	
+	<update id="updateRaceNum" parameterType="com.airquay.rowing.vo.main">		
+		update current_race set
+		
+		race_num='${value}' 
+	</update>
+	
 	<update id="recordUpload500m" parameterType="com.airquay.rowing.vo.main">		
 		update record set
 		

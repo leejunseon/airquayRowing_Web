@@ -242,5 +242,35 @@ public class MainController {
 		main.setRace_num(Integer.parseInt(RaceNum));
 		rowingService.recordUpload(main);
 	}
+  
   	
+  	//경기저보 가져오기//////////////////////////////////////////////////
+  	@RequestMapping(value = "/main/updateRaceinfo", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody JSONObject updateRaceinfo(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session){
+		String CurrentDate = request.getParameter("raceDate");
+		main main=new main();
+		main.setRace_date(CurrentDate);
+		
+		JSONObject sObject = new JSONObject();
+		JSONArray sArray = new JSONArray();
+		JSONObject sMain = new JSONObject();
+		
+		String raceNum;
+		String OnOff;
+		String Starttime;
+		
+		if(CurrentDate.equals(raceDate)){//경기정보가 있으면
+			raceNum=rowingService.get
+			
+			 sObject.put("key", "ok");
+			 sArray.add(0, sObject);
+			 sMain.put("dataSend", sArray);
+		}
+		else{//경기정보가 없으면
+			 sObject.put("key", "no");
+			 sArray.add(0, sObject);
+			 sMain.put("dataSend", sArray);
+		}
+		return sMain;
+	}
 }
