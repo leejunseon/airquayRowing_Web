@@ -225,5 +225,31 @@
 		race_num='${race_num}' and
 		bow_num='${bow_num}'
 	</update>
+	
+	<select id="getCurrentRaceNum" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select current_race.race_num
+		
+		from airquay.current_race
+	</select>
+	
+	<select id="getCurrentOnoff" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select raceinfo.check_onoff
+		
+		from airquay.raceinfo
+		
+		where 
+		race_date='${race_date}' and
+		race_num='${race_num}'
+	</select>
+	
+	<select id="getCurrentStarttime" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select raceinfo.start_time
+		
+		from airquay.raceinfo
+		
+		where 
+		race_date='${race_date}' and
+		race_num='${race_num}'
+	</select>
 
 </mapper>

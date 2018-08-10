@@ -133,4 +133,25 @@ public class mainDaoImpl  implements mainDAO{
 			sqlSession.update(mapper+"recordUploadFinish",main);
 	}
 
+	@Override
+	public String getCurrentRaceNum() {
+		// TODO Auto-generated method stub
+		String CurrentRaceNum=sqlSession.selectOne(mapper+"getCurrentRaceNum");
+		return CurrentRaceNum;
+	}
+
+	@Override
+	public String getCurrentOnoff(main main) {
+		// TODO Auto-generated method stub
+		String CurrentOnoff=sqlSession.selectOne(mapper+"getCurrentOnoff",main);
+		return CurrentOnoff;
+	}
+
+	@Override
+	public String getCurrentStarttime(main main) {
+		// TODO Auto-generated method stub
+		String CurrentStarttime=sqlSession.selectOne(mapper+"getCurrentStarttime",main);
+		return CurrentStarttime;
+	}
+
 }

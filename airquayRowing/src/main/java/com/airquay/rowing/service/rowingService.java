@@ -119,5 +119,22 @@ public class rowingService {
 		mainDAO.recordUpload(main);
 	}
 
+	public String getCurrentRaceNum() {
+		// TODO Auto-generated method stub
+		String CurrentRaceNum=mainDAO.getCurrentRaceNum();
+		return CurrentRaceNum;
+	}
+
+	public String getCurrentOnoff(main main) {
+		// TODO Auto-generated method stub
+		String CurrentOnoff=mainDAO.getCurrentOnoff(main);
+		return CurrentOnoff;
+	}
+
+	public String getCurrenStarttime(main main) {
+		// TODO Auto-generated method stub
+		String CurrentStarttime=mainDAO.getCurrentStarttime(main);
+		return CurrentStarttime;
+	}
 
 }

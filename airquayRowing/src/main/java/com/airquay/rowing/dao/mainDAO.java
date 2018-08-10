@@ -37,5 +37,11 @@ public interface mainDAO {
 	String getRaceNum(String raceNum);
 
 	void recordUpload(main main);
+
+	String getCurrentRaceNum();
+
+	String getCurrentOnoff(main main);
+
+	String getCurrentStarttime(main main);
 	
 }

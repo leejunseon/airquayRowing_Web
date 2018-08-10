@@ -242,35 +242,32 @@ public class MainController {
 		main.setRace_num(Integer.parseInt(RaceNum));
 		rowingService.recordUpload(main);
 	}
-  
   	
-  	//경기저보 가져오기//////////////////////////////////////////////////
   	@RequestMapping(value = "/main/updateRaceinfo", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody JSONObject updateRaceinfo(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session){
-		String CurrentDate = request.getParameter("raceDate");
+		String race_date = request.getParameter("raceDate");
 		main main=new main();
-		main.setRace_date(CurrentDate);
+		String race_num=rowingService.getCurrentRaceNum();
+		main.setRace_date(race_date);//경기 날짜 설정
+		main.setRace_num(Integer.parseInt(race_num));//진행중인 경기 번호 설정
 		
-		JSONObject sObject = new JSONObject();
+		String check_onoff=rowingService.getCurrentOnoff(main);
+		String start_time=rowingService.getCurrenStarttime(main);
+		
+		JSONObject Racenum = new JSONObject();
+		JSONObject Onoff=new JSONObject();
+		JSONObject Starttime=new JSONObject();
 		JSONArray sArray = new JSONArray();
 		JSONObject sMain = new JSONObject();
-		
-		String raceNum;
-		String OnOff;
-		String Starttime;
-		
-		if(CurrentDate.equals(raceDate)){//경기정보가 있으면
-			raceNum=rowingService.get
-			
-			 sObject.put("key", "ok");
-			 sArray.add(0, sObject);
-			 sMain.put("dataSend", sArray);
-		}
-		else{//경기정보가 없으면
-			 sObject.put("key", "no");
-			 sArray.add(0, sObject);
-			 sMain.put("dataSend", sArray);
-		}
+
+		Racenum.put("race_num", race_num);
+		Onoff.put("Onoff", check_onoff);
+		Starttime.put("StartTime", start_time);
+		sArray.add(0, Racenum);
+		sArray.add(1,Onoff);
+		sArray.add(2,Starttime);
+		sMain.put("dataSend", sArray);
+	
 		return sMain;
 	}
 }
