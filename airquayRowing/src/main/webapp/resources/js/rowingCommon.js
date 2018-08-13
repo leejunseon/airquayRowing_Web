@@ -77,23 +77,41 @@ var common={
 		for(var i=0; i<rankList.length; i++){
 			if(rankList[i].fivehundred_time!=null)
 				$("#raceRecord500_"+rankList[i].bow_num).text(rankList[i].fivehundred_time);
+			else
+				$("#raceRecord500_"+rankList[i].bow_num).text("00:00:00.00");
 			if(rankList[i].fivehundred_rank!=null)
 				$("#rank500_"+rankList[i].bow_num).text(rankList[i].fivehundred_rank);
+			else
+				$("#rank500_"+rankList[i].bow_num).text("-");
 			if(rankList[i].thousand_time!=null)
 				$("#raceRecord1000_"+rankList[i].bow_num).text(rankList[i].thousand_time);
+			else
+				$("#raceRecord1000_"+rankList[i].bow_num).text("00:00:00.00");
 			if(rankList[i].thousand_rank!=null)
 				$("#rank1000_"+rankList[i].bow_num).text(rankList[i].thousand_rank);
+			else
+				$("#rank1000_"+rankList[i].bow_num).text("-");
 			if(rankList[i].thousandfivehundred_time!=null)
 				$("#raceRecord1500_"+rankList[i].bow_num).text(rankList[i].thousandfivehundred_time);
+			else
+				$("#raceRecord1500_"+rankList[i].bow_num).text("00:00:00.00");
 			if(rankList[i].thousandfivehundred_rank!=null)
 				$("#rank1500_"+rankList[i].bow_num).text(rankList[i].thousandfivehundred_rank);
+			else
+				$("#rank1500_"+rankList[i].bow_num).text("-");
 			if(rankList[i].finish_time!=null)
 				$("#raceRecord2000_"+rankList[i].bow_num).text(rankList[i].finish_time);
+			else
+				$("#raceRecord2000_"+rankList[i].bow_num).text("00:00:00.00");
 			if(rankList[i].finish_rank!=null)
 				$("#rank2000_"+rankList[i].bow_num).text(rankList[i].finish_rank);
+			else
+				$("#rank2000_"+rankList[i].bow_num).text("-");
 			for(var j=0;j<rankList.length;j++){
 				if(rankList[j].finish_rank==i+1&&rankList[j].finish_rank!=null)
 					$("#"+(i+1)+"rankTeamName").text(rankList[j].team_name);
+				if(rankList[j].finish_rank==null)
+					$("#"+(i+1)+"rankTeamName").text("-");
 			}
 		}
 	},
