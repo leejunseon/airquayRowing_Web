@@ -21,8 +21,24 @@ var common={
 						{
 							console.log("data = "+data)
 							common.onOffinish_timer(data);
-							//polingStatus = "500m";
 						}
+						var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
+						$.ajax({
+							url:'http://localhost:8080/airquayRowing/main/getStartTime',
+							type : 'GET',
+							cache: false,
+							contentType: false,
+							processData: false,
+							data : json_data,
+							dataType : 'json',
+							success : function(data){
+								start_time=data[0].start_time;
+								common.process();
+							},
+							error : function(data){
+
+							}
+						});
 					}else if(data==2){//onoff가 2이면
 						console.log("data = "+data)
 						common.onOffinish_timer(data);
@@ -258,11 +274,14 @@ var common={
 	process : function(){
 		var now = new Date();
 		var nowTime = now.getTime();
+	
 		var fullstartTime = now.getFullYear() + "-" + (now.getMonth()+1) + "-" +now.getDate() + " " + start_time;
 		var starttime = new Date(fullstartTime);
 		var startTime=starttime.getTime();
 		var time = nowTime - startTime;
-		common.showTime(time);
+		if(time>=0)
+			common.showTime(time);
+		
 	},
 
 	
@@ -277,8 +296,7 @@ var common={
 		var hour = parseInt(totalmin / 60, 10);
 		var min = totalmin % 60;
 		output = leadingZeros(hour,2) + ":" + leadingZeros(min,2) + ":" + leadingZeros(sec,2) + "." + tinysec;
-		if(output.indexOf("-")==-1&&output.indexOf("NaN")==-1)
-			$("#watchtime").text(output)
+		$("#watchtime").text(output)
 	},
 	
 	start : function(num){

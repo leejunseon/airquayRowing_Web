@@ -38,10 +38,12 @@ public interface mainDAO {
 
 	void recordUpload(main main);
 
-	String getCurrentRaceNum();
+	String getCurrentRaceNum(main main);
 
 	String getCurrentOnoff(main main);
 
 	String getCurrentStarttime(main main);
+
+	void nextRacenum(main main);
 	
 }

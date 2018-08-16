@@ -179,7 +179,31 @@
 	<update id="updateRaceNum" parameterType="com.airquay.rowing.vo.main">		
 		update current_race set
 		
-		race_num='${value}' 
+		current_race.Start='${value}' 
+	</update>
+	
+	<update id="nextRacenum_500" parameterType="com.airquay.rowing.vo.main">		
+		update current_race set
+		
+		current_race.500m='${race_num}' 
+	</update>
+	
+	<update id="nextRacenum_1000" parameterType="com.airquay.rowing.vo.main">		
+		update current_race set
+		
+		current_race.1000m='${race_num}' 
+	</update>
+	
+	<update id="nextRacenum_1500" parameterType="com.airquay.rowing.vo.main">		
+		update current_race set
+		
+		current_race.1500m='${race_num}' 
+	</update>
+	
+	<update id="nextRacenum_Final" parameterType="com.airquay.rowing.vo.main">		
+		update current_race set
+		
+		current_race.Final='${race_num}' 
 	</update>
 	
 	<update id="recordUpload500m" parameterType="com.airquay.rowing.vo.main">		
@@ -226,11 +250,40 @@
 		bow_num='${bow_num}'
 	</update>
 	
-	<select id="getCurrentRaceNum" parameterType="com.airquay.rowing.vo.main" resultType="String">
-		select current_race.race_num
+	<select id="getCurrentRaceNum_Start" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select current_race.Start
+		
+		from airquay.current_race
+		
+	</select>
+	
+	<select id="getCurrentRaceNum_500" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select current_race.500m
+		
+		from airquay.current_race
+		
+	</select>
+	
+	<select id="getCurrentRaceNum_1000" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select current_race.1000m
+		
+		from airquay.current_race
+		
+	</select>
+	
+	<select id="getCurrentRaceNum_1500" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select current_race.1500m
+		
+		from airquay.current_race
+		
+	</select>
+	
+	<select id="getCurrentRaceNum_Final" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select current_race.Final
 		
 		from airquay.current_race
 	</select>
+	
 	
 	<select id="getCurrentOnoff" parameterType="com.airquay.rowing.vo.main" resultType="String">
 		select raceinfo.check_onoff

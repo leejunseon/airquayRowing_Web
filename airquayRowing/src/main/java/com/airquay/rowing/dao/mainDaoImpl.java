@@ -134,9 +134,20 @@ public class mainDaoImpl  implements mainDAO{
 	}
 
 	@Override
-	public String getCurrentRaceNum() {
+	public String getCurrentRaceNum(main main) {
 		// TODO Auto-generated method stub
-		String CurrentRaceNum=sqlSession.selectOne(mapper+"getCurrentRaceNum");
+		String CurrentRaceNum=null;
+		if(main.getHut().equals("Start"))
+			CurrentRaceNum=sqlSession.selectOne(mapper+"getCurrentRaceNum_Start");
+		else if(main.getHut().equals("500m"))
+			CurrentRaceNum=sqlSession.selectOne(mapper+"getCurrentRaceNum_500");
+		else if(main.getHut().equals("1000m"))
+			CurrentRaceNum=sqlSession.selectOne(mapper+"getCurrentRaceNum_1000");
+		else if(main.getHut().equals("1500m"))
+			CurrentRaceNum=sqlSession.selectOne(mapper+"getCurrentRaceNum_1500");
+		else if(main.getHut().equals("Final"))
+			CurrentRaceNum=sqlSession.selectOne(mapper+"getCurrentRaceNum_Final");
+
 		return CurrentRaceNum;
 	}
 
@@ -152,6 +163,19 @@ public class mainDaoImpl  implements mainDAO{
 		// TODO Auto-generated method stub
 		String CurrentStarttime=sqlSession.selectOne(mapper+"getCurrentStarttime",main);
 		return CurrentStarttime;
+	}
+
+	@Override
+	public void nextRacenum(main main) {
+		// TODO Auto-generated method stub
+		if(main.getHut().equals("500m"))
+			sqlSession.update(mapper+"nextRacenum_500",main);
+		else if(main.getHut().equals("1000m"))
+			sqlSession.update(mapper+"nextRacenum_1000",main);
+		else if(main.getHut().equals("1500m"))
+			sqlSession.update(mapper+"nextRacenum_1500",main);
+		else if(main.getHut().equals("Final"))
+			sqlSession.update(mapper+"nextRacenum_Final",main);
 	}
 
 }

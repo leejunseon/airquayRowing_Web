@@ -223,6 +223,33 @@ public class MainController {
 		return sMain;
 	}
   	
+  	@RequestMapping(value = "/main/nextRacenum", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody JSONObject nextRacenum(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session){
+		String raceNum=request.getParameter("raceNum");
+		main main=new main();
+		main.setRace_num(Integer.parseInt(raceNum));
+		main.setHut("Start");
+		String startRacenum=rowingService.getCurrentRaceNum(main);
+		String Hut=request.getParameter("Hut");
+		main.setHut(Hut);
+		JSONObject sObject = new JSONObject();
+		JSONArray sArray = new JSONArray();
+		JSONObject sMain = new JSONObject();
+		if(main.getRace_num()<Integer.parseInt(startRacenum)){
+			main.setRace_num(Integer.parseInt(raceNum)+1);
+			 rowingService.nextRacenum(main);
+			 sObject.put("key", "ok");
+			 sArray.add(0, sObject);
+			 sMain.put("dataSend", sArray);
+		}
+		else{
+			 sObject.put("key", "no");
+			 sArray.add(0, sObject);
+			 sMain.put("dataSend", sArray);
+		}
+		return sMain;
+	}
+  	
   	@RequestMapping(value = "/main/recordUpload", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody void recordUpload(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		String Hut=request.getParameter("HUT");
@@ -246,8 +273,10 @@ public class MainController {
   	@RequestMapping(value = "/main/updateRaceinfo", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody JSONObject updateRaceinfo(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session){
 		String race_date = request.getParameter("raceDate");
+		String Hut=request.getParameter("Hut");
 		main main=new main();
-		String race_num=rowingService.getCurrentRaceNum();
+		main.setHut(Hut);//Hut 설정
+		String race_num=rowingService.getCurrentRaceNum(main);//Hut에 따른 현재 경기번호 가져옴
 		main.setRace_date(race_date);//경기 날짜 설정
 		main.setRace_num(Integer.parseInt(race_num));//진행중인 경기 번호 설정
 		
