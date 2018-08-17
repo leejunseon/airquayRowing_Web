@@ -31,14 +31,6 @@ public class mainDaoImpl  implements mainDAO{
 	}
 
 	@Override
-	public List getRank(main main) {
-		// TODO Auto-generated method stub
-		
-		List rankList = sqlSession.selectList(mapper+"getRankList", main);
-		return rankList;
-	}
-
-	@Override
 	public List getRaceInfo(String toDay) {
 		// TODO Auto-generated method stub
 		List raceInfo = sqlSession.selectList(mapper+"getRaceInfo", toDay);
@@ -176,6 +168,36 @@ public class mainDaoImpl  implements mainDAO{
 			sqlSession.update(mapper+"nextRacenum_1500",main);
 		else if(main.getHut().equals("Final"))
 			sqlSession.update(mapper+"nextRacenum_Final",main);
+	}
+
+
+	@Override
+	public String passTimerString(String race_num) {
+		// TODO Auto-generated method stub
+		String pastHour=sqlSession.selectOne(mapper+"pastHour",race_num);
+		String pastMinute=sqlSession.selectOne(mapper+"pastMinute",race_num);
+		String pastSecond=sqlSession.selectOne(mapper+"pastSecond",race_num);
+		String pastMiliSecond=sqlSession.selectOne(mapper+"pastMiliSecond",race_num);
+		
+		if(Integer.parseInt(pastHour)<10)
+			pastHour="0"+pastHour;
+		if(Integer.parseInt(pastMinute)<10)
+			pastMinute="0"+pastMinute;
+		if(Integer.parseInt(pastSecond)<10)
+			pastSecond="0"+pastSecond;
+		if(Integer.parseInt(pastMiliSecond)<10)
+			pastMiliSecond="0"+pastMiliSecond;
+		
+		String passTimerString=pastHour+":"+pastMinute+":"+pastSecond+"."+pastMiliSecond;
+		
+		return passTimerString;
+	}
+
+	@Override
+	public String dayRacenum(String race_num) {
+		// TODO Auto-generated method stub
+		String dayRacenum=sqlSession.selectOne(mapper+"dayRacenum",race_num);
+		return dayRacenum;
 	}
 
 }

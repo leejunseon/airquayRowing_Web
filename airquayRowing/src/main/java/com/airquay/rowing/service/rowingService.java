@@ -24,12 +24,6 @@ public class rowingService {
 		return passTimer;
 	}
 
-	public List<List> getRank(main main) {
-		// TODO Auto-generated method stub
-		List rankList = mainDAO.getRank(main);
-		return rankList;
-	}
-
 	public List<List> getRaceInfo(String toDay) {
 		// TODO Auto-generated method stub
 		List raceInfo = mainDAO.getRaceInfo(toDay);
@@ -140,6 +134,18 @@ public class rowingService {
 	public void nextRacenum(main main) {
 		// TODO Auto-generated method stub
 		mainDAO.nextRacenum(main);
+	}
+
+	public String passTimerString(String race_num) {
+		// TODO Auto-generated method stub
+		String passTimerString = mainDAO.passTimerString(race_num);
+		return passTimerString;
+	}
+
+	public String dayRacenum(String race_num) {
+		// TODO Auto-generated method stub
+		String dayRacenum=mainDAO.dayRacenum(race_num);
+		return dayRacenum;
 	}
 
 }

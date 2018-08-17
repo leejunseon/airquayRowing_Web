@@ -4,6 +4,8 @@ var common={
 	RacePoling : function(){
 		console.log("Race poling, raceInfo : "+raceInfo)
 		common.beforeStartPolling();
+		common.setStarttime();
+		common.setFinishtime();
 		if(raceInfo != undefined){
 			var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
 			var url = 'http://localhost:8080/airquayRowing/main/raceStartPoling';
@@ -217,7 +219,7 @@ var common={
 		console.log("dispRaceList")
 		var innerHtml = "";
 		for(var i=0; i<raceInfo.length; i++){
-			innerHtml += "<option value="+i+"> Race "+raceInfo[i].race_num+"</option>"
+			innerHtml += "<option value="+(raceInfo[i].race_num-1)+"> Race "+raceInfo[i].day_race_num+"</option>"
 		}
 		$("#infrontrace_num").empty().append(innerHtml);
 		common.dispRaceInfo();
@@ -227,7 +229,7 @@ var common={
 	//경기정보 출력
 	dispRaceInfo : function(){
 		console.log("dispRaceInfo")
-		var race_num = $("#infrontrace_num").val();
+		var race_num = $("#infrontrace_num").val()-raceInfo[0].race_num+1;
 		if(raceInfo[race_num].start_time == null){
 			$("#racestart_time").text("Not started yet.");
 		}else{
@@ -252,7 +254,6 @@ var common={
 		console.log("onOffinish_timer, num : "+num)
 		if (num==1) {//시작
 			common.start(1);
-			common.setStarttime();
 			flag=1;
 		}else if(num==2){//2분선
 			common.start(2);
@@ -265,7 +266,6 @@ var common={
 		}
 		else{//종료
 			common.stop(0);
-			common.setFinishtime();
 			flag=0;
 			common.PastTimeReceive();
 		}
@@ -340,7 +340,10 @@ var common={
 			data : json_data,
 			dataType : 'json',
 			success : function(data){
-				$("#racestart_time").text(data[0].start_time);
+				if(data[0]!=null)
+					$("#racestart_time").text(data[0].start_time);
+				else
+					$("#racestart_time").text("Not started yet.");
 			},
 			error : function(data){
 
@@ -359,7 +362,10 @@ var common={
 			data : json_data,
 			dataType : 'json',
 			success : function(data){
-				$("#racefinish_time").text(data[0].stop_time);
+				if(data[0]!=null)
+					$("#racefinish_time").text(data[0].stop_time);
+				else
+					$("#racefinish_time").text("Not finished yet.");
 			},
 			error : function(data){
 

@@ -10,8 +10,6 @@ public interface mainDAO {
 
 	List passTimer(main main);
 
-	List getRank(main main);
-
 	List getRaceInfo(String toDay);
 
 	List getbowInfo(main main);
@@ -45,5 +43,9 @@ public interface mainDAO {
 	String getCurrentStarttime(main main);
 
 	void nextRacenum(main main);
+
+	String passTimerString(String race_num);
+
+	String dayRacenum(String race_num);
 	
 }

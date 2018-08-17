@@ -106,6 +106,16 @@ public class MainController {
 		return timeList;
 	}
 	
+	@RequestMapping(value = "/main/passTimerString", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody String passTimerString(Model model, HttpServletRequest request, HttpServletResponse response) {
+		main main=new main();
+		String race_num=request.getParameter("race_num");
+		String timeList = rowingService.passTimerString(race_num);
+		return timeList;
+	}
+	
+	
+	
 	@RequestMapping(value = "/main/getRaceInfo", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody List getRaceInfo(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		main main = new main();
@@ -276,25 +286,33 @@ public class MainController {
 		String Hut=request.getParameter("Hut");
 		main main=new main();
 		main.setHut(Hut);//Hut 설정
-		String race_num=rowingService.getCurrentRaceNum(main);//Hut에 따른 현재 경기번호 가져옴
 		main.setRace_date(race_date);//경기 날짜 설정
+		String race_num=rowingService.getCurrentRaceNum(main);//Hut에 따른 현재 경기번호 가져옴
 		main.setRace_num(Integer.parseInt(race_num));//진행중인 경기 번호 설정
 		
 		String check_onoff=rowingService.getCurrentOnoff(main);
 		String start_time=rowingService.getCurrenStarttime(main);
+		String finish_time=rowingService.passTimerString(race_num);
+		String day_race_num=rowingService.dayRacenum(race_num);
 		
 		JSONObject Racenum = new JSONObject();
 		JSONObject Onoff=new JSONObject();
 		JSONObject Starttime=new JSONObject();
+		JSONObject Finishtime=new JSONObject();
+		JSONObject dayRacenum=new JSONObject();
 		JSONArray sArray = new JSONArray();
 		JSONObject sMain = new JSONObject();
 
 		Racenum.put("race_num", race_num);
 		Onoff.put("Onoff", check_onoff);
 		Starttime.put("StartTime", start_time);
+		Finishtime.put("FinishTime", finish_time);
+		dayRacenum.put("day_race_num", day_race_num);
 		sArray.add(0, Racenum);
 		sArray.add(1,Onoff);
 		sArray.add(2,Starttime);
+		sArray.add(3,Finishtime);
+		sArray.add(4,dayRacenum);
 		sMain.put("dataSend", sArray);
 	
 		return sMain;

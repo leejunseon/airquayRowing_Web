@@ -19,6 +19,38 @@
 		where isOn.race_num='${race_num}';
 	</select>
 	
+	<select id="pastHour"  parameterType="String" resultType="String">
+		select pastHour
+		
+		from isOn
+		
+		where isOn.race_num='${value}';
+	</select>
+	
+	<select id="pastMinute" parameterType="String"  resultType="String">
+		select pastMinute
+		
+		from isOn
+		
+		where isOn.race_num='${value}';
+	</select>
+	
+	<select id="pastSecond" parameterType="String"  resultType="String">
+		select pastSecond
+		
+		from isOn
+		
+		where isOn.race_num='${value}';
+	</select>
+	
+	<select id="pastMiliSecond" parameterType="String"  resultType="String">
+		select pastMiliSecond
+		
+		from isOn
+		
+		where isOn.race_num='${value}';
+	</select>
+	
 	<select id="getRaceInfo" parameterType="String" resultType="com.airquay.rowing.vo.main">
 		select 
 		raceinfo.race_num, 
@@ -57,27 +89,6 @@
 		left join airquay.team_info ti on ti.team_num = rec.team_num
 		
 		where rec.race_num = '${race_num}';
-	</select>
-
-	<select id="getRankList"  parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
-		select 
-		t.race_num, 
-		t.bowNum, 
-		bi.countryName, 
-		raceinfo.raceDate, 
-		concat(t.arriveHour,':', t.arriveMinute,':', t.arriveSecond,':', t.arriveMiliSecond) as arriveTime 
-		
-		from rowing.${tableType} t
-		left join rowing.raceinfo raceinfo on raceinfo.race_num = t.race_num
-		left join rowing.boatinfo bi on t.bowNum = bi.bowNum
-		
-		where t.race_num = ${race_num} 
-		and raceinfo.raceDate = t.raceDate
-		and t.raceDate = bi.raceDate
-		and t.race_num = bi.race_num 
-		and raceinfo.raceDate = '${raceDate}' 
-		
-		order by arriveTime;
 	</select>
 	
 	<select id="checkUser" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
@@ -150,7 +161,7 @@
 		
 		from airquay.raceinfo ri 
 		
-		where ri.race_date = '2018-08-03'
+		where ri.race_date = '2018-08-17'
 	</select>
 	
 	<select id="getStartTime" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
@@ -304,5 +315,14 @@
 		race_date='${race_date}' and
 		race_num='${race_num}'
 	</select>
-
+	
+	<select id="dayRacenum" parameterType="String" resultType="String">
+		select raceinfo.day_race_num
+		
+		from airquay.raceinfo
+		
+		where 
+		race_num='${value}';
+	</select>
+	
 </mapper>
