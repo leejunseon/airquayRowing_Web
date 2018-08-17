@@ -26,7 +26,7 @@ public interface mainDAO {
 
 	void stopTimeSend(main main);
 
-	List getRaceList();
+	List getRaceList(String mTime);
 
 	List getStartTime(main main);
 

@@ -256,6 +256,8 @@ var common={
 			common.start(1);
 			flag=1;
 		}else if(num==2){//2분선
+			clearInterval(stopwatch);
+			common.PastTimeReceive();
 			common.start(2);
 			flag=2;
 		}
@@ -303,6 +305,7 @@ var common={
 		console.log("start, twoYn : "+num)
 		var now = new Date();
 		if(num==2){
+			
 			$("#raceStatus").text("2 분전");
 			$("#raceStatus").css("background-color", "#FF0000");
 		}else if(num==1){

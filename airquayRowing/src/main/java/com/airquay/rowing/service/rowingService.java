@@ -84,9 +84,9 @@ public class rowingService {
 	}
 
 
-	public List<Object> getRaceList() {
+	public List<Object> getRaceList(String mTime) {
 		// TODO Auto-generated method stub
-		List raceList=mainDAO.getRaceList();
+		List raceList=mainDAO.getRaceList(mTime);
 		return raceList;
 	}
 

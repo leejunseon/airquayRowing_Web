@@ -52,7 +52,10 @@ public class MainController {
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String dashboard(Model model, HttpServletRequest request, HttpServletResponse response) {
 		List<Object> raceList = new ArrayList<Object>();
-		raceList = rowingService.getRaceList();
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
+		Date currentTime = new Date ();
+		String mTime = mSimpleDateFormat.format ( currentTime );
+		raceList = rowingService.getRaceList(mTime);
 		model.addAttribute("raceList", raceList);
 		return "main/main";//main폴더의 main.jsp로 ㄱㄱ
 	}

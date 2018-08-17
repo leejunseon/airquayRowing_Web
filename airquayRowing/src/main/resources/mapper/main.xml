@@ -161,7 +161,7 @@
 		
 		from airquay.raceinfo ri 
 		
-		where ri.race_date = '2018-08-17'
+		where ri.race_date = '${value}'
 	</select>
 	
 	<select id="getStartTime" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
