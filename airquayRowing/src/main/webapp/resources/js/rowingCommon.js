@@ -6,6 +6,7 @@ var common={
 		common.beforeStartPolling();
 		common.setStarttime();
 		common.setFinishtime();
+		common.raceYN();
 		if(raceInfo != undefined){
 			var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
 			var url = 'http://localhost:8080/airquayRowing/main/raceStartPoling';
@@ -53,10 +54,17 @@ var common={
 						console.log("data="+data)
 						common.refresh();
 					}
-					else{//onoff가 0이면
-						console.log("data = "+data)
-						common.onOffinish_timer(data);
+					else if((data==0||data==5)&&raceYN=="true"){
+						console.log("data="+data)
+						$("#raceStatus").text(" ");
+						common.Setonoff_Five();
 					}
+					else if((data==0||data==5)&&raceYN=="false"){
+						console.log("data="+data)
+						common.onOffinish_timer(data);
+						flag=0;
+					}
+					
 				},
 				error : function(data){
 				}
@@ -65,7 +73,46 @@ var common={
 			common.getRaceInfo();
 		}
 	},
+	
+	Setonoff_Five : function(){
+		var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
+		var url = 'http://localhost:8080/airquayRowing/main/Setonoff_Five';
+		$.ajax({
+			url:url,
+			type : 'GET',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data : json_data,
+			dataType : 'json',
+			success : function(){
+			},
+			error : function(){
+			}
+		});
+	},
 
+	raceYN : function(){
+		var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
+		var url = 'http://localhost:8080/airquayRowing/main/fiveNull';
+		$.ajax({
+			url:url,
+			type : 'GET',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data : json_data,
+			dataType : 'json',
+			success : function(data){
+				if(data==true)
+					raceYN="true";
+				else
+					raceYN="false";
+			},
+			error : function(){
+			}
+		});
+	},
 	
 	//bowinfo 가져옴
 	beforeStartPolling : function(){

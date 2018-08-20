@@ -148,4 +148,15 @@ public class rowingService {
 		return dayRacenum;
 	}
 
+	public String five_null(String race_num) {
+		// TODO Auto-generated method stub
+		String result =mainDAO.five_null(race_num);
+		return result;
+	}
+
+	public void Setonoff_Five(String race_num) {
+		// TODO Auto-generated method stub
+		mainDAO.Setonoff_Five(race_num);
+	}
+
 }

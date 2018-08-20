@@ -283,6 +283,20 @@ public class MainController {
 		rowingService.recordUpload(main);
 	}
   	
+  	@RequestMapping(value = "/main/fiveNull", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody String fiveNull(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+  		String result=null;
+  		String race_num = request.getParameter("race_num");
+  		result = rowingService.five_null(race_num);
+  		return result;
+	}
+  	
+	@RequestMapping(value = "/main/Setonoff_Five", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody void Setonoff_Five(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+  		String race_num = request.getParameter("race_num");
+  		rowingService.Setonoff_Five(race_num);
+	}
+  	  	
   	@RequestMapping(value = "/main/updateRaceinfo", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody JSONObject updateRaceinfo(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session){
 		String race_date = request.getParameter("raceDate");

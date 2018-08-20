@@ -19,7 +19,7 @@
 	var output; //  output string
 	var count; // number of record
 	var flag=0;
-	var polingStatus = "start"; // polling으로 가져올 url선택옵션 start : 시작전, 500m :500m전, 1000m :1000m전, 1500m :1500m전, finish :2000m전
+	var raceYN;
 	
 	$(document).ready(function() {
 		console.log("main.jsp Start")

@@ -199,5 +199,36 @@ public class mainDaoImpl  implements mainDAO{
 		String dayRacenum=sqlSession.selectOne(mapper+"dayRacenum",race_num);
 		return dayRacenum;
 	}
+	
+	@Override
+	public String five_null(String race_num) {
+		// TODO Auto-generated method stub
+		String result;
+		
+		String teamOne=sqlSession.selectOne(mapper+"five_null_one",race_num);
+		String teamTwo=sqlSession.selectOne(mapper+"five_null_two",race_num);
+		String teamThree=sqlSession.selectOne(mapper+"five_null_three",race_num);
+		String teamFour=sqlSession.selectOne(mapper+"five_null_four",race_num);
+		String teamFive=sqlSession.selectOne(mapper+"five_null_five",race_num);
+		String teamSix=sqlSession.selectOne(mapper+"five_null_six",race_num);
+				
+		if(teamOne==null &&
+		   teamTwo==null &&
+		   teamThree==null &&
+		   teamFour==null &&
+		   teamFive==null && 
+		   teamSix==null) {
+			result="true";
+		}else {
+			result="false";
+		}
+		return result;
+	}
+
+	@Override
+	public void Setonoff_Five(String race_num) {
+		// TODO Auto-generated method stub
+		sqlSession.update(mapper+"Setonoff_Five",race_num);
+	}
 
 }
