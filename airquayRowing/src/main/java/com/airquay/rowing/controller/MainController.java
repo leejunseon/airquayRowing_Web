@@ -290,12 +290,6 @@ public class MainController {
   		result = rowingService.five_null(race_num);
   		return result;
 	}
-  	
-	@RequestMapping(value = "/main/Setonoff_Five", method = { RequestMethod.GET, RequestMethod.POST })
-	public @ResponseBody void Setonoff_Five(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-  		String race_num = request.getParameter("race_num");
-  		rowingService.Setonoff_Five(race_num);
-	}
   	  	
   	@RequestMapping(value = "/main/updateRaceinfo", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody JSONObject updateRaceinfo(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session){
@@ -311,12 +305,14 @@ public class MainController {
 		String start_time=rowingService.getCurrenStarttime(main);
 		String finish_time=rowingService.passTimerString(race_num);
 		String day_race_num=rowingService.dayRacenum(race_num);
+		String five_null=rowingService.five_null(race_num);
 		
 		JSONObject Racenum = new JSONObject();
 		JSONObject Onoff=new JSONObject();
 		JSONObject Starttime=new JSONObject();
 		JSONObject Finishtime=new JSONObject();
 		JSONObject dayRacenum=new JSONObject();
+		JSONObject fiveNull=new JSONObject();
 		JSONArray sArray = new JSONArray();
 		JSONObject sMain = new JSONObject();
 
@@ -325,11 +321,13 @@ public class MainController {
 		Starttime.put("StartTime", start_time);
 		Finishtime.put("FinishTime", finish_time);
 		dayRacenum.put("day_race_num", day_race_num);
+		fiveNull.put("five_null", five_null);
 		sArray.add(0, Racenum);
 		sArray.add(1,Onoff);
 		sArray.add(2,Starttime);
 		sArray.add(3,Finishtime);
 		sArray.add(4,dayRacenum);
+		sArray.add(5,fiveNull);
 		sMain.put("dataSend", sArray);
 	
 		return sMain;

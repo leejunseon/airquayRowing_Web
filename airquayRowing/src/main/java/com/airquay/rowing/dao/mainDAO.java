@@ -49,7 +49,5 @@ public interface mainDAO {
 	String dayRacenum(String race_num);
 
 	String five_null(String race_num);
-
-	void Setonoff_Five(String race_num);
 	
 }

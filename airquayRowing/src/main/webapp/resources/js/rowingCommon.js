@@ -54,10 +54,9 @@ var common={
 						console.log("data="+data)
 						common.refresh();
 					}
-					else if((data==0||data==5)&&raceYN=="true"){
+					else if((data==0)&&raceYN=="true"){
 						console.log("data="+data)
 						$("#raceStatus").text(" ");
-						common.Setonoff_Five();
 					}
 					else if((data==0||data==5)&&raceYN=="false"){
 						console.log("data="+data)
@@ -72,24 +71,6 @@ var common={
 		}else{
 			common.getRaceInfo();
 		}
-	},
-	
-	Setonoff_Five : function(){
-		var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
-		var url = 'http://localhost:8080/airquayRowing/main/Setonoff_Five';
-		$.ajax({
-			url:url,
-			type : 'GET',
-			cache: false,
-			contentType: false,
-			processData: false,
-			data : json_data,
-			dataType : 'json',
-			success : function(){
-			},
-			error : function(){
-			}
-		});
 	},
 
 	raceYN : function(){

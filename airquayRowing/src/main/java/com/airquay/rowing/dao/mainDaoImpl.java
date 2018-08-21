@@ -225,10 +225,5 @@ public class mainDaoImpl  implements mainDAO{
 		return result;
 	}
 
-	@Override
-	public void Setonoff_Five(String race_num) {
-		// TODO Auto-generated method stub
-		sqlSession.update(mapper+"Setonoff_Five",race_num);
-	}
 
 }

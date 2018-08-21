@@ -154,9 +154,5 @@ public class rowingService {
 		return result;
 	}
 
-	public void Setonoff_Five(String race_num) {
-		// TODO Auto-generated method stub
-		mainDAO.Setonoff_Five(race_num);
-	}
 
 }
