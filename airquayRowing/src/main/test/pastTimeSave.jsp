@@ -10,7 +10,7 @@ String msg2;
 String msg3;
 String msg4;
 String driverName="com.mysql.jdbc.Driver";
-String url = "jdbc:mysql://localhost:3306/airquay";
+String url = "jdbc:mysql://13.209.161.83:3306/airquay";
 String id = "root";
 String pwd ="airquay1!";
 try{

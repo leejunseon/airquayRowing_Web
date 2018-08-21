@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
 		String milisecond=null;
 
 		try{
-			String url = "jdbc:mysql://localhost:3306/airquay";
+			String url = "jdbc:mysql://13.209.161.83:3306/airquay";
 			Class.forName("com.mysql.jdbc.Driver");
 			hutPosition= request.getParameter("HUT");
 			hour= request.getParameter("HOUR");
@@ -94,7 +94,7 @@ pageEncoding="UTF-8"%>
 			<%
             Class.forName("com.mysql.jdbc.Driver");
             try{
-                String jdbcDriver = "jdbc:mysql://localhost:3306/airquay";
+                String jdbcDriver = "jdbc:mysql://13.209.161.83:3306/airquay";
                 String dbUser = "root";
                 String dbPwd = "airquay1!";
 

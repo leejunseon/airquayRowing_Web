@@ -10,7 +10,7 @@
         String record = null;
 
         try{
-        String url = "jdbc:mysql://localhost:3306/airquay";
+        String url = "jdbc:mysql://13.209.161.83:3306/airquay";
         Class.forName("com.mysql.jdbc.Driver");
         record= request.getParameter("RECORD");
         bowNum= request.getParameter("BOWNUM");
