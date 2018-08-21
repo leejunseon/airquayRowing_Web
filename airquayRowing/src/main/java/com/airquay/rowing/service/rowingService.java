@@ -102,9 +102,9 @@ public class rowingService {
 		return FinishTime;
 	}
 
-	public String getRaceNum(String raceNum) {
+	public String getRaceNum(main main) {
 		// TODO Auto-generated method stub
-		String raceInfo=mainDAO.getRaceNum(raceNum);
+		String raceInfo=mainDAO.getRaceNum(main);
 		return raceInfo;
 	}
 

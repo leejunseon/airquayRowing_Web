@@ -104,11 +104,11 @@ public class mainDaoImpl  implements mainDAO{
 	}
 
 	@Override
-	public String getRaceNum(String raceNum) {
+	public String getRaceNum(main main) {
 		// TODO Auto-generated method stub
-		String raceInfo=sqlSession.selectOne(mapper+"getRaceNum", raceNum);
+		String raceInfo=sqlSession.selectOne(mapper+"getRaceNum", main);
 		if(raceInfo!=null)
-			sqlSession.update(mapper+"updateRaceNum", raceNum);
+			sqlSession.update(mapper+"updateRaceNum", main);
 		return raceInfo;
 	}
 

@@ -40,7 +40,6 @@ public class MainController {
 	public String main(Model model, HttpServletRequest request, HttpServletResponse response) {
  		HttpSession session = request.getSession();
  		Boolean loginUser = (Boolean) session.getAttribute("loginUser");
- 		//loginUser = true; // --> 로그인화면 패스
 		if(loginUser==null){
 			model.addAttribute("loginCheck", false);
 		}else{
@@ -70,7 +69,8 @@ public class MainController {
 		main.setUser_pw(user_pw);
 		Boolean userCheck = rowingService.checkUser(main);
 		if(userCheck==true){
-			List<List> userInfo = rowingService.userInfo(main);
+			List userInfo = rowingService.userInfo(main);
+			//main.setUser_name(userInfo.get(0));
 			session.setAttribute("loginUser", true);
 			session.setAttribute("user_name", main.getUser_name());
 			session.setAttribute("user_no", main.getUser_no());
@@ -222,7 +222,7 @@ public class MainController {
 		JSONObject sObject = new JSONObject();
 		JSONArray sArray = new JSONArray();
 		JSONObject sMain = new JSONObject();
-		String raceDate=rowingService.getRaceNum(raceNum);
+		String raceDate=rowingService.getRaceNum(main);
 		if(CurrentDate.equals(raceDate)){
 			 sObject.put("key", "ok");
 			 sArray.add(0, sObject);

@@ -18,10 +18,6 @@ var loginCheck;
 $(document).ready(function() {
 	loginCheck = "${loginCheck}";
 	console.log("loginCheck : "+loginCheck)
-// 	<c:if test="${loginCheck}">
-	
-
-// 	</c:if>
 	doResize();
 	dispLoginPage();
 });

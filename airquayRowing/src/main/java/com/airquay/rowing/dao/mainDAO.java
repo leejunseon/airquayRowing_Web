@@ -32,7 +32,7 @@ public interface mainDAO {
 
 	List getFinishTime(main main);
 
-	String getRaceNum(String raceNum);
+	String getRaceNum(main main);
 
 	void recordUpload(main main);
 

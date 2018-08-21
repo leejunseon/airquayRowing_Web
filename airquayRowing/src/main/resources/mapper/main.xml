@@ -184,13 +184,14 @@
 		select raceinfo.race_date
 		from airquay.raceinfo
 		where 
-		raceinfo.race_num='${value}'
+		raceinfo.race_num='${race_num}' and
+		raceinfo.race_date='${race_date}'
 	</select>
 	
 	<update id="updateRaceNum" parameterType="com.airquay.rowing.vo.main">		
 		update current_race set
 		
-		current_race.Start='${value}' 
+		current_race.Start='${race_num}' 
 	</update>
 	
 	<update id="nextRacenum_500" parameterType="com.airquay.rowing.vo.main">		
