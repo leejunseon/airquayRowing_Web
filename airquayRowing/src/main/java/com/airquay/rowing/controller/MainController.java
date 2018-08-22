@@ -36,7 +36,7 @@ public class MainController {
 	private com.airquay.rowing.service.rowingService rowingService;
 	
 	
-	@RequestMapping(value = "/main", method = RequestMethod.GET)//http://13.209.161.83:8080/airquayRowing/main 접속 시 호출
+	@RequestMapping(value = "/main", method = RequestMethod.GET)//http://localhost:8080/airquayRowing/main 접속 시 호출
 	public String main(Model model, HttpServletRequest request, HttpServletResponse response) {
  		HttpSession session = request.getSession();
  		Boolean loginUser = (Boolean) session.getAttribute("loginUser");
@@ -60,8 +60,9 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })//로그인정보 확인 후 true/false반환
-	public @ResponseBody Boolean login(Model model, HttpServletRequest request, HttpServletResponse response) {
+	public @ResponseBody List login(Model model, HttpServletRequest request, HttpServletResponse response) {
 		main main = new main();
+		List<Object> resultList = new ArrayList();
 		HttpSession session = request.getSession(false);
 		String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
@@ -69,19 +70,13 @@ public class MainController {
 		main.setUser_pw(user_pw);
 		Boolean userCheck = rowingService.checkUser(main);
 		if(userCheck==true){
-			List userInfo = rowingService.userInfo(main);
-			//main.setUser_name(userInfo.get(0));
+			List<List> userInfo = rowingService.userInfo(main);
+			model.addAttribute("userInfo",userInfo);
 			session.setAttribute("loginUser", true);
-			session.setAttribute("user_name", main.getUser_name());
-			session.setAttribute("user_no", main.getUser_no());
-			session.setAttribute("user_id", main.getUser_id());
-			session.setAttribute("sex", main.getSex());
-			session.setAttribute("birth", main.getBirth());
-			session.setAttribute("team_name", main.getTeam_name());
-			session.setAttribute("team_num", main.getTeam_num());
-			session.setAttribute("team_country", main.getTeam_country());
+			resultList.add(0, userInfo);
 		}
-		return userCheck;
+		resultList.add(1, userCheck);
+		return resultList;
 	}
 	
 	@RequestMapping(value = "/main/raceStartPoling", method = { RequestMethod.GET, RequestMethod.POST })
@@ -331,5 +326,57 @@ public class MainController {
 		sMain.put("dataSend", sArray);
 	
 		return sMain;
+	}
+  	
+	@RequestMapping(value = "/main/addUser", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody void addUser(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+  		String user_id=request.getParameter("user_id");
+  		String user_pw=request.getParameter("user_pw");
+  		String user_name=request.getParameter("user_name");
+  		String sex=request.getParameter("sex");
+  		String birthday=request.getParameter("birthday");
+  		String nationality=request.getParameter("nationality");
+  		String team_num=request.getParameter("team_num");
+  		
+  		main main=new main();
+  		main.setUser_id(user_id);
+  		main.setUser_pw(user_pw);
+  		main.setUser_name(user_name);
+  		main.setSex(sex);
+  		main.setBirth(birthday);
+  		main.setNationality(nationality);
+  		main.setTeam_num(Integer.parseInt(team_num));
+  		
+  		rowingService.addUser(main);
+	}
+	
+	@RequestMapping(value = "/main/addRace", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody void addRace(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+  		String event_name=request.getParameter("event_name");
+  		String race_date=request.getParameter("year")+"-"+request.getParameter("month")+"-"+request.getParameter("day");
+  		String round_type=request.getParameter("round_type");
+  		String progression=request.getParameter("progression");
+  		String LaneOne=request.getParameter("LaneOne");
+  		String LaneTwo=request.getParameter("LaneTwo");
+  		String LaneThree=request.getParameter("LaneThree");
+  		String LaneFour=request.getParameter("LaneFour");
+  		String LaneFive=request.getParameter("LaneFive");
+  		String LaneSix=request.getParameter("LaneSix");
+  		int day_race_num=rowingService.getDayracenum(race_date);
+  		
+  		main main=new main();
+  		main.setDay_race_num(day_race_num);
+  		main.setEvent_name(event_name);
+  		main.setRace_date(race_date);
+  		main.setRound_type(round_type);
+  		main.setProgression(progression);
+  		main.setLaneOne(LaneOne);
+  		main.setLaneTwo(LaneTwo);
+  		main.setLaneThree(LaneThree);
+  		main.setLaneFour(LaneFour);
+  		main.setLaneFive(LaneFive);
+  		main.setLaneSix(LaneSix);
+  		
+  		rowingService.addRace(main);
 	}
 }

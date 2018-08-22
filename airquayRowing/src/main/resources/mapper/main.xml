@@ -386,5 +386,67 @@
 		team_num='6';
 	</select>
 
+	<insert id="addUser" parameterType="com.airquay.rowing.vo.main">
+		insert into airquay.airquay_user
+		values(null,'${user_id}','${user_pw}','${user_name}','${sex}','${birth}','${nationality}','${team_num}',null,null);
+	</insert>
 	
+	<select id="getPastrace" parameterType="String" resultType="com.airquay.rowing.vo.main">
+		select race_date
+		
+		from airquay.raceinfo
+		
+		where
+		race_date='${value}';
+	</select>
+	
+	<insert id="addRace" parameterType="com.airquay.rowing.vo.main">
+		insert into airquay.raceinfo
+		values(null,'${day_race_num}','${event_name}','${race_date}','${round_type}',null,null,0,'${progression}');
+	</insert>
+	
+	<select id="raceNum" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select race_num
+		
+		from airquay.raceinfo
+		
+		where
+		race_date='${race_date}' and
+		day_race_num='${day_race_num}'
+	</select>
+	
+	<insert id="addIson" parameterType="String">
+		insert into airquay.ison
+		values('${value}',0,0,0,0);
+	</insert>
+	
+	<insert id="addRecordOne" parameterType="com.airquay.rowing.vo.main">
+		insert into airquay.record
+		values(null,'${race_num}','${LaneOne}','1',null,null,null,null,null,null,null,null);
+	</insert>
+	
+	<insert id="addRecordTwo" parameterType="com.airquay.rowing.vo.main">
+		insert into airquay.record
+		values(null,'${race_num}','${LaneTwo}','2',null,null,null,null,null,null,null,null);
+	</insert>
+	
+	<insert id="addRecordThree" parameterType="com.airquay.rowing.vo.main">
+		insert into airquay.record
+		values(null,'${race_num}','${LaneThree}','3',null,null,null,null,null,null,null,null);
+	</insert>
+	
+	<insert id="addRecordFour" parameterType="com.airquay.rowing.vo.main">
+		insert into airquay.record
+		values(null,'${race_num}','${LaneFour}','4',null,null,null,null,null,null,null,null);
+	</insert>
+	
+	<insert id="addRecordFive" parameterType="com.airquay.rowing.vo.main">
+		insert into airquay.record
+		values(null,'${race_num}','${LaneFive}','5',null,null,null,null,null,null,null,null);
+	</insert>
+	
+	<insert id="addRecordSix" parameterType="com.airquay.rowing.vo.main">
+		insert into airquay.record
+		values(null,'${race_num}','${LaneSix}','6',null,null,null,null,null,null,null,null);
+	</insert>
 </mapper>

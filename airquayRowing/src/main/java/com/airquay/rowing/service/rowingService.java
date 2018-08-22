@@ -53,33 +53,49 @@ public class rowingService {
 
 	public Boolean setRaceStart(main main) {
 		// TODO Auto-generated method stub
-		Boolean result = false;
-//try catch 성공 = return = true
-		// 실패 = return = false
-		mainDAO.setRaceStart(main);
-
+		Boolean result;
+		try {
+			mainDAO.setRaceStart(main);
+			result=true;
+		}catch(Exception e) {
+			result=false;
+		}
 		return result;
 	}
 
 	public Boolean pastTimeSave(main main) {
 		// TODO Auto-generated method stub
-		
-		Boolean result=false;
-		mainDAO.pastTimeSave(main);
+		Boolean result;
+		try {
+			mainDAO.pastTimeSave(main);
+			result=true;
+		}catch(Exception e) {
+			result=false;
+		}
 		return result;
 	}
 
 	public Boolean startTimeSend(main main) {
 		// TODO Auto-generated method stub
-		Boolean result=false;
-		mainDAO.startTimeSend(main);
+		Boolean result;
+		try {
+			mainDAO.startTimeSend(main);
+			result=true;
+		}catch(Exception e) {
+			result=false;
+		}
 		return result;
 	}
 
 	public Boolean stopTimeSend(main main) {
 		// TODO Auto-generated method stub
-		Boolean result=false;
-		mainDAO.stopTimeSend(main);
+		Boolean result;
+		try {
+			mainDAO.stopTimeSend(main);
+			result=true;
+		}catch(Exception e) {
+			result=false;
+		}
 		return result;
 	}
 
@@ -152,6 +168,22 @@ public class rowingService {
 		// TODO Auto-generated method stub
 		String result =mainDAO.five_null(race_num);
 		return result;
+	}
+
+	public void addUser(main main) {
+		// TODO Auto-generated method stub
+		mainDAO.addUser(main);
+	}
+
+	public int getDayracenum(String race_date) {
+		// TODO Auto-generated method stub
+		int pastRace=mainDAO.getDayracenum(race_date);
+		return pastRace;
+	}
+
+	public void addRace(main main) {
+		// TODO Auto-generated method stub
+		mainDAO.addRace(main);
 	}
 
 

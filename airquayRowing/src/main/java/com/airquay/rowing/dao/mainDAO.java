@@ -49,5 +49,11 @@ public interface mainDAO {
 	String dayRacenum(String race_num);
 
 	String five_null(String race_num);
+
+	void addUser(main main);
+
+	int getDayracenum(String race_date);
+
+	void addRace(main main);
 	
 }

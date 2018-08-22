@@ -60,8 +60,50 @@ public class main {
 	private String Hut;	
 	private String LabTime;
 	private Integer rank;
+	private String LaneOne;
+	private String LaneTwo;
+	private String LaneThree;
+	private String LaneFour;
+	private String LaneFive;
+	private String LaneSix;
 	
 	
+	public String getLaneOne() {
+		return LaneOne;
+	}
+	public void setLaneOne(String laneOne) {
+		LaneOne = laneOne;
+	}
+	public String getLaneTwo() {
+		return LaneTwo;
+	}
+	public void setLaneTwo(String laneTwo) {
+		LaneTwo = laneTwo;
+	}
+	public String getLaneThree() {
+		return LaneThree;
+	}
+	public void setLaneThree(String laneThree) {
+		LaneThree = laneThree;
+	}
+	public String getLaneFour() {
+		return LaneFour;
+	}
+	public void setLaneFour(String laneFour) {
+		LaneFour = laneFour;
+	}
+	public String getLaneFive() {
+		return LaneFive;
+	}
+	public void setLaneFive(String laneFive) {
+		LaneFive = laneFive;
+	}
+	public String getLaneSix() {
+		return LaneSix;
+	}
+	public void setLaneSix(String laneSix) {
+		LaneSix = laneSix;
+	}
 	public Integer getRank() {
 		return rank;
 	}
