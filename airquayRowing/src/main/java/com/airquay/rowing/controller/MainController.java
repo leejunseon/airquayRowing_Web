@@ -363,9 +363,11 @@ public class MainController {
   		String LaneFive=request.getParameter("LaneFive");
   		String LaneSix=request.getParameter("LaneSix");
   		int day_race_num=rowingService.getDayracenum(race_date);
+  		int race_num=rowingService.getracenum();
   		
   		main main=new main();
   		main.setDay_race_num(day_race_num);
+  		main.setRace_num(race_num);
   		main.setEvent_name(event_name);
   		main.setRace_date(race_date);
   		main.setRound_type(round_type);

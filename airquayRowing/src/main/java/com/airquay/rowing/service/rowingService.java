@@ -186,5 +186,11 @@ public class rowingService {
 		mainDAO.addRace(main);
 	}
 
+	public int getracenum() {
+		// TODO Auto-generated method stub
+		int race_num=mainDAO.getRacenum();
+		return race_num;
+	}
+
 
 }

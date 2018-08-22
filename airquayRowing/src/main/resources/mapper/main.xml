@@ -402,7 +402,7 @@
 	
 	<insert id="addRace" parameterType="com.airquay.rowing.vo.main">
 		insert into airquay.raceinfo
-		values(null,'${day_race_num}','${event_name}','${race_date}','${round_type}',null,null,0,'${progression}');
+		values('${race_num}','${day_race_num}','${event_name}','${race_date}','${round_type}',null,null,0,'${progression}');
 	</insert>
 	
 	<select id="raceNum" parameterType="com.airquay.rowing.vo.main" resultType="String">
@@ -415,9 +415,15 @@
 		day_race_num='${day_race_num}'
 	</select>
 	
-	<insert id="addIson" parameterType="String">
+	<select id="getRacenum" parameterType="com.airquay.rowing.vo.main" resultType="String">
+		select race_num
+		
+		from airquay.raceinfo
+	</select>
+	
+	<insert id="addIson" parameterType="com.airquay.rowing.vo.main">
 		insert into airquay.ison
-		values('${value}',0,0,0,0);
+		values('${race_num}',0,0,0,0);
 	</insert>
 	
 	<insert id="addRecordOne" parameterType="com.airquay.rowing.vo.main">

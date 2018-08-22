@@ -55,5 +55,7 @@ public interface mainDAO {
 	int getDayracenum(String race_date);
 
 	void addRace(main main);
+
+	int getRacenum();
 	
 }

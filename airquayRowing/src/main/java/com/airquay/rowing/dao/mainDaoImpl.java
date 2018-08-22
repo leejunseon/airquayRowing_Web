@@ -244,10 +244,7 @@ public class mainDaoImpl  implements mainDAO{
 	public void addRace(main main) {
 		// TODO Auto-generated method stub
 		sqlSession.insert(mapper+"addRace",main);
-		
-		String raceNum=sqlSession.selectOne(mapper+"raceNum",main);
-		sqlSession.insert(mapper+"addIson",raceNum);
-		main.setRace_num(Integer.parseInt(raceNum));
+		sqlSession.insert(mapper+"addIson",main);
 		
 		sqlSession.insert(mapper+"addRecordOne",main);
 		sqlSession.insert(mapper+"addRecordTwo",main);
@@ -256,6 +253,14 @@ public class mainDaoImpl  implements mainDAO{
 		sqlSession.insert(mapper+"addRecordFive",main);
 		sqlSession.insert(mapper+"addRecordSix",main);
 
+	}
+
+	@Override
+	public int getRacenum() {
+		// TODO Auto-generated method stub
+		List<Object> raceNum=sqlSession.selectList(mapper+"getRacenum");
+		int race_num=raceNum.size()+1;
+		return race_num;
 	}
 
 }
