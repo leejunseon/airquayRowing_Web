@@ -36,7 +36,7 @@ public class MainController {
 	private com.airquay.rowing.service.rowingService rowingService;
 	
 	
-	@RequestMapping(value = "/main", method = RequestMethod.GET)//http://localhost:8080/airquayRowing/main 접속 시 호출
+	@RequestMapping(value = "/main", method = RequestMethod.GET)//http://13.209.161.83:8080/airquayRowing/main 접속 시 호출
 	public String main(Model model, HttpServletRequest request, HttpServletResponse response) {
  		HttpSession session = request.getSession();
  		Boolean loginUser = (Boolean) session.getAttribute("loginUser");

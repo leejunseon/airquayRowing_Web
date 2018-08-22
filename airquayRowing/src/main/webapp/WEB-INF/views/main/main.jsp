@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Rowing Airquay</title>
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=1">
+<link type="text/css" rel="stylesheet" href="http://13.209.161.83:8080/airquayRowing/resources/css/rowingCommon.css?ver=1">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=1">
-<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=1"></script>
+<script src="http://13.209.161.83:8080/airquayRowing/resources/js/rowingCommon.js?ver=1"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=1"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=1"></script>
 <script type="text/javascript">
