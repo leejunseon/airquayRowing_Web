@@ -5,13 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Airquay rowing management system</title>
-<link type="text/css" rel="stylesheet" href="http://13.209.161.83:8080/airquayRowing/resources/css/rowingCommon.css?ver=1">
-<link type="text/css" rel="stylesheet" href="http://13.209.161.83:8080/airquayRowing/resources/css/rowingLogin.css?ver=1">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=1">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=2">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingLogin.css?ver=2">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=2">
 
-<script src="http://13.209.161.83:8080/airquayRowing/resources/js/rowingCommon.js?ver=1"></script>
-<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=1"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=1"></script>
+<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=2"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=2"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=2"></script>
 <script type="text/javascript">
 var loginCheck;
 
@@ -38,7 +38,7 @@ function dispLoginPage(){
 function login(){
 	var json_data = "user_id="+($("#user_id").val());
 		json_data += "&user_pw="+($("#user_pw").val());
-	var url = 'http://13.209.161.83:8080/airquayRowing/login';
+	var url = 'http://localhost:8080/airquayRowing/login';
 	console.log("login")
 	$.ajax({
 		url:url,
@@ -56,10 +56,17 @@ function login(){
 		}//data에 controller의 /login의 리턴값 저장됨.
 	});
 }
+function signup(){
+	var innerHtml="";
+	innerHtml = "<iframe src='http://localhost:8080/airquayRowing/signup' style='width: 100%; height: 100%; border: none;'></iframe>"
+	$("#bodyArea").empty();
+	$("#bodyArea").append(innerHtml)
+	$("#bodyArea").css("display", "block");
+}
 function resultLogin(data){
 	var innerHtml = "";
 	if(data==true){
-		innerHtml = "<iframe src='http://13.209.161.83:8080/airquayRowing/dashboard' style='width: 100%; height: 100%; border: none;'></iframe>"
+		innerHtml = "<iframe src='http://localhost:8080/airquayRowing/select' style='width: 100%; height: 100%; border: none;'></iframe>"
 			$("#bodyArea").empty();
 			$("#bodyArea").append(innerHtml)
 			$("#bodyArea").css("display", "block");
@@ -75,7 +82,7 @@ function resultLogin(data){
 		<div id="titleArea">Rowing Management System</div>
 	</div>
 	<div id="bodyArea" style="display: none;">
-		<img alt="" id="LoginImage" src="http://13.209.161.83:8080/airquayRowing/resources/img/main_visual_01.jpg" style="width:100%;">
+		<img alt="" id="LoginImage" src="http://localhost:8080/airquayRowing/resources/img/main_visual_01.jpg" style="width:100%;">
 		<div id="loginArea">
 			<div style="float: left; width: 100%; height: 50px; font-size: 30px; text-indent: 30px; font-weight: bold; margin-top: 20px;">Login</div>
 			<div style="float: left; width: 100%;">
@@ -94,9 +101,9 @@ function resultLogin(data){
 				</div>
 			</div>
 			<div style="float: left; width: 100%;">
-<!-- 				<div style="float: left; color: #5b87bd; font-size: 13px; margin-left: 100px; cursor: pointer;">Join Us</div> -->
-<!-- 				<div style="float: left; color: #5b87bd; font-size: 13px; margin-left: 15px;">/</div> -->
-				<div style="float: left; color: #5b87bd; font-size: 13px; margin-left: 100px; cursor: pointer;">Find ID</div>
+				<div style="float: left; color: #5b87bd; font-size: 13px; margin-left: 100px; cursor: pointer;"onclick="javascript:signup();">Sign Up</div>
+				<div style="float: left; color: #5b87bd; font-size: 13px; margin-left: 15px;">/</div>
+				<div style="float: left; color: #5b87bd; font-size: 13px; margin-left: 15px; cursor: pointer;">Find ID</div>
 				<div style="float: left; color: #5b87bd; font-size: 13px; margin-left: 15px;">/</div>
 				<div style="float: left; color: #5b87bd; font-size: 13px; margin-left: 15px; cursor: pointer;">Find PW</div>
 			</div>

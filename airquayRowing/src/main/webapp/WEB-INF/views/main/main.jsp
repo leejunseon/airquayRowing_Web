@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Rowing Airquay</title>
-<link type="text/css" rel="stylesheet" href="http://13.209.161.83:8080/airquayRowing/resources/css/rowingCommon.css?ver=1">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=1">
-<script src="http://13.209.161.83:8080/airquayRowing/resources/js/rowingCommon.js?ver=1"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=1"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=1"></script>
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=2">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=2">
+<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=2"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=2"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=2"></script>
 <script type="text/javascript">
 	var raceList;
 	var raceInfo;
@@ -37,7 +37,6 @@ function doResize(){
 	var windowWidth = $(window).width();
 	if(windowWidth>1680){
 		$("#bodyArea").css("margin-left", (windowWidth-1676)/2)
-		$("#btnArea").css("margin-right", (windowWidth-1676)/2)
 	}
 }
 function realTimeClock() {
@@ -187,7 +186,7 @@ function leadingZeros(n, digits) {
 	                    <td id="rank500_3">(-)</td>
 	                </tr>
 	                <tr>
-	                    <td class="bow_num">4</td>
+	                    <td class="bow_num">4</td> 
 	                    <td id="raceRecord500_4">00:00:00.00</td>
 	                    <td id="rank500_4">(-)</td>
 	                </tr>

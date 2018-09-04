@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+#headerArea {
+	height: 60px;
+}
+#titleArea{
+    padding-left: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 60px;
+    color: white;
+}
+#bodyArea{
+	position: relative;
+}
+#bodyArea img{
+	position: absolute;
+	top: 0px;
+}
+#SelectArea{
+	position: absolute;
+	right: 300px;
+    width: 550px;
+    height: 450px;
+    top: 95px;
+    background-color: white;
+    box-shadow:5px 5px 10px #cccccc;
+}
+#bottomArea{
+	height: 40px;
+}
+.loginLabel{
+	float: left;
+	width: 100px;
+	font-size: 20px;
+	text-indent: 30px;
+	font-weight: bold;
+	line-height: 50px;
+}
+.inputText{
+	height: 25px;
+	margin-top: 14px;
+	float: left;
+}
+#SelectBtn{
+    background-color: #3e6699;
+    color: white;
+    margin-top: 30px;
+    margin-left: 75px;
+    width: 400px;
+    height: 81px;
+    text-align: center;
+    line-height: 73px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+

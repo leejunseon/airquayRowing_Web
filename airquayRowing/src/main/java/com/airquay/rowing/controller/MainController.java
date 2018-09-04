@@ -36,7 +36,7 @@ public class MainController {
 	private com.airquay.rowing.service.rowingService rowingService;
 	
 	
-	@RequestMapping(value = "/main", method = RequestMethod.GET)//http://13.209.161.83:8080/airquayRowing/main 접속 시 호출
+	@RequestMapping(value = "/main", method = RequestMethod.GET)//http://localhost:8080/airquayRowing/main 접속 시 호출
 	public String main(Model model, HttpServletRequest request, HttpServletResponse response) {
  		HttpSession session = request.getSession();
  		Boolean loginUser = (Boolean) session.getAttribute("loginUser");
@@ -45,6 +45,7 @@ public class MainController {
 		}else{
 			model.addAttribute("loginCheck", true);
 		}
+		//model.addAttribute("loginCheck", false);
 		return "main/login"; //main폴더의login.jsp로 ㄱㄱ
 	}
 	
@@ -59,6 +60,21 @@ public class MainController {
 		return "main/main";//main폴더의 main.jsp로 ㄱㄱ
 	}
 	
+	@RequestMapping(value = "/select", method = RequestMethod.GET)
+	public String select(Model model, HttpServletRequest request, HttpServletResponse response) {
+		return "main/select";
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String signup(Model model, HttpServletRequest request, HttpServletResponse response) {
+		return "main/signup";
+	}
+	
+	@RequestMapping(value = "/aftersignup", method = RequestMethod.GET)
+	public String aftersignup(Model model, HttpServletRequest request, HttpServletResponse response) {
+		return "main/login";
+	}
+	
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })//로그인정보 확인 후 true/false반환
 	public @ResponseBody List login(Model model, HttpServletRequest request, HttpServletResponse response) {
 		main main = new main();
@@ -69,13 +85,17 @@ public class MainController {
 		main.setUser_id(user_id);
 		main.setUser_pw(user_pw);
 		Boolean userCheck = rowingService.checkUser(main);
+		List<List> userInfo = rowingService.userInfo(main);
 		if(userCheck==true){
-			List<List> userInfo = rowingService.userInfo(main);
 			model.addAttribute("userInfo",userInfo);
 			session.setAttribute("loginUser", true);
 			resultList.add(0, userInfo);
+			resultList.add(1, userCheck);
 		}
-		resultList.add(1, userCheck);
+		else {
+			resultList.add(0, userInfo);
+			resultList.add(1, userCheck);
+		}
 		return resultList;
 	}
 	
@@ -380,5 +400,5 @@ public class MainController {
   		main.setLaneSix(LaneSix);
   		
   		rowingService.addRace(main);
-	}
+  	}
 }

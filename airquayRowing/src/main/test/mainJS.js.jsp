@@ -118,7 +118,7 @@
                 function AjaxCall() {
                         $.ajax({
                                 cache : false,
-                                url : 'http://13.209.161.83:8080/timerIsOn.jsp',
+                                url : 'http://localhost:8080/timerIsOn.jsp',
                                 success : function(data) {
                                         $("#raceRecord500_1").html(data);
                                 }

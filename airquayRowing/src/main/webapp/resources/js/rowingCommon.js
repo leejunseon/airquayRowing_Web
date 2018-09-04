@@ -9,7 +9,7 @@ var common={
 		common.raceYN();
 		if(raceInfo != undefined){
 			var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
-			var url = 'http://13.209.161.83:8080/airquayRowing/main/raceStartPoling';
+			var url = 'http://localhost:8080/airquayRowing/main/raceStartPoling';
 			$.ajax({
 				url:url,
 				type : 'GET',
@@ -27,7 +27,7 @@ var common={
 						}
 						var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
 						$.ajax({
-							url:'http://13.209.161.83:8080/airquayRowing/main/getStartTime',
+							url:'http://localhost:8080/airquayRowing/main/getStartTime',
 							type : 'GET',
 							cache: false,
 							contentType: false,
@@ -75,7 +75,7 @@ var common={
 
 	raceYN : function(){
 		var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
-		var url = 'http://13.209.161.83:8080/airquayRowing/main/fiveNull';
+		var url = 'http://localhost:8080/airquayRowing/main/fiveNull';
 		$.ajax({
 			url:url,
 			type : 'GET',
@@ -86,6 +86,7 @@ var common={
 			dataType : 'json',
 			success : function(data){
 				if(data==true)
+					
 					raceYN="true";
 				else
 					raceYN="false";
@@ -99,7 +100,7 @@ var common={
 	beforeStartPolling : function(){
 		console.log("beforeStartPolling")
 		var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
-		var url = 'http://13.209.161.83:8080/airquayRowing/main/beforeStartPolling';
+		var url = 'http://localhost:8080/airquayRowing/main/beforeStartPolling';
 		$.ajax({
 			url:url,
 			type : 'GET',
@@ -167,7 +168,7 @@ var common={
 		console.log("getRaceInfo")
 		var json_data = "raceDate="+$("#toDay").text();//toDay를 raceDate파라미터로 넘김
 		$.ajax({
-			url:'http://13.209.161.83:8080/airquayRowing/main/getRaceInfo',
+			url:'http://localhost:8080/airquayRowing/main/getRaceInfo',
 			type : 'GET',
 			cache: false,
 			contentType: false,
@@ -192,7 +193,7 @@ var common={
 		console.log("getBowInfo")
 		var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
 		$.ajax({
-			url:'http://13.209.161.83:8080/airquayRowing/main/getBowInfo',
+			url:'http://localhost:8080/airquayRowing/main/getBowInfo',
 			type : 'GET',
 			cache: false,
 			contentType: false,
@@ -339,7 +340,7 @@ var common={
 		}else if(num==1){
 			var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
 			$.ajax({
-				url:'http://13.209.161.83:8080/airquayRowing/main/getStartTime',
+				url:'http://localhost:8080/airquayRowing/main/getStartTime',
 				type : 'GET',
 				cache: false,
 				contentType: false,
@@ -363,7 +364,7 @@ var common={
 	setStarttime : function(){
 		var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
 		$.ajax({
-			url:'http://13.209.161.83:8080/airquayRowing/main/getStartTime',
+			url:'http://localhost:8080/airquayRowing/main/getStartTime',
 			type : 'GET',
 			cache: false,
 			contentType: false,
@@ -385,7 +386,7 @@ var common={
 	setFinishtime : function(){
 		var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
 		$.ajax({
-			url:'http://13.209.161.83:8080/airquayRowing/main/getFinishTime',
+			url:'http://localhost:8080/airquayRowing/main/getFinishTime',
 			type : 'GET',
 			cache: false,
 			contentType: false,
@@ -423,7 +424,7 @@ var common={
 		console.log("PastTimeReceive")
 		var json_data = "race_num="+(Number($("#infrontrace_num").val())+1);
 		$.ajax({
-			url:'http://13.209.161.83:8080/airquayRowing/main/passTimer',
+			url:'http://localhost:8080/airquayRowing/main/passTimer',
 			type : 'GET',
 			cache: false,
 			contentType: false,
