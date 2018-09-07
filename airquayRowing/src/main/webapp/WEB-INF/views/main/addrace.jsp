@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Airquay rowing management system</title>
 <link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=1">
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingSignup.css?ver=1">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingAddrace.css?ver=1">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=1">
 
 <script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=1"></script>
@@ -70,41 +70,57 @@ function resultSignup(data){
 <body style="margin: 0px; background-color: #3e6699; overflow: hidden;">
 	<div id="bodyArea" style="display: none;">
 	<img alt="" id="LoginImage" src="http://localhost:8080/airquayRowing/resources/img/main_visual_01.jpg" style="width:100%;">
-		<div id="SignupArea">
-			<div style="float: left; width: 100%; height: 50px; font-size: 30px; text-indent: 30px; font-weight: bold; margin-top: 20px;">Sign Up</div>
+		<div id="addraceArea">
+			<div style="float: left; width: 100%; height: 50px; font-size: 30px; text-indent: 30px; font-weight: bold; margin-top: 20px;">Race info</div>
 			<div style="float: left; width: 100%;">
 				<div style="float: left; width: 65%;">
 					<div style="float: left; width: 100%; height: 50px;">
-						<div class="loginLabel">ID</div>
-						<div class="inputText"><input id="user_id" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+						<div class="raceLabel">Event name</div>
+						<div class="inputText"><input id="event_name" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 					<div style="float: left; width: 100%; height: 50px;">
-						<div class="loginLabel">PW</div>
-						<div class="inputText"><input id="user_pw" type="password" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+						<div class="raceLabel">Year</div>
+						<div class="inputText"><input id="year" type="password" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 					<div style="float: left; width: 100%; height: 50px;">
-						<div class="loginLabel">Name</div>
-						<div class="inputText"><input id="user_name" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+						<div class="raceLabel">Month</div>
+						<div class="inputText"><input id="month" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 					<div style="float: left; width: 100%; height: 50px;">
-						<div class="loginLabel">sex</div>
-						<div class="inputText"><input id="sex" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+						<div class="raceLabel">Day</div>
+						<div class="inputText"><input id="day" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 					<div style="float: left; width: 100%; height: 50px;">
-						<div class="loginLabel">Birthday</div>
-						<div class="inputText"><input id="birthday" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+						<div class="raceLabel">Round type</div>
+						<div class="inputText"><input id="round_type" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 					<div style="float: left; width: 100%; height: 50px;">
-						<div class="loginLabel">Nationality</div>
-						<div class="inputText"><input id="nationality" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+						<div class="raceLabel">Lane 1</div>
+						<div class="inputText"><input id="LaneOne" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 					<div style="float: left; width: 100%; height: 50px;">
-						<div class="loginLabel">TeamNum</div>
-						<div class="inputText"><input id="team_num" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+						<div class="raceLabel">Lane 2</div>
+						<div class="inputText"><input id="LaneTwo" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+					</div>
+					<div style="float: left; width: 100%; height: 50px;">
+						<div class="raceLabel">Lane 3</div>
+						<div class="inputText"><input id="LaneThree" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+					</div>
+					<div style="float: left; width: 100%; height: 50px;">
+						<div class="raceLabel">Lane 4</div>
+						<div class="inputText"><input id="LaneFour" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+					</div>
+					<div style="float: left; width: 100%; height: 50px;">
+						<div class="raceLabel">Lane 5</div>
+						<div class="inputText"><input id="LaneFive" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+					</div>
+					<div style="float: left; width: 100%; height: 50px;">
+						<div class="raceLabel">Lane 6</div>
+						<div class="inputText"><input id="LaneSix" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 				</div>
 				<div style="float: left;" onclick="javascript:adduser();">
-					<div id="SignupBtn">Sign up</div>
+					<div id="SignupBtn">Submit</div>
 				</div>
 			</div>
 		</div>

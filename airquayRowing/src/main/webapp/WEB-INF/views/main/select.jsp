@@ -5,13 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Airquay rowing management system</title>
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=2">
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingSelect.css?ver=2">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=2">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=1">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingSelect.css?ver=1">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=1">
 
-<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=2"></script>
-<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=2"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=2"></script>
+<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=1"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=1"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=1"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -35,6 +35,13 @@ function Dashboard(){
 	$("#bodyArea").append(innerHtml)
 	$("#bodyArea").css("display", "block");
 }
+function addRace(){
+	var innerHtml = "";
+	innerHtml = "<iframe src='http://localhost:8080/airquayRowing/addrace' style='width: 100%; height: 100%; border: none;'></iframe>"
+	$("#bodyArea").empty();
+	$("#bodyArea").append(innerHtml)
+	$("#bodyArea").css("display", "block");
+}
 </script>
 </head>
 
@@ -50,7 +57,7 @@ function Dashboard(){
 				<div style="float: left;" onclick="javascript:login();">
 					<div id="SelectBtn">Record</div>
 				</div>
-				<div style="float: left;" onclick="javascript:login();">
+				<div style="float: left;" onclick="javascript:addRace();">
 					<div id="SelectBtn">Add Race</div>
 				</div>
 			</div>

@@ -45,7 +45,7 @@ public class MainController {
 		}else{
 			model.addAttribute("loginCheck", true);
 		}
-		//model.addAttribute("loginCheck", false);
+		model.addAttribute("loginCheck", false);
 		return "main/login"; //main폴더의login.jsp로 ㄱㄱ
 	}
 	
@@ -73,6 +73,11 @@ public class MainController {
 	@RequestMapping(value = "/aftersignup", method = RequestMethod.GET)
 	public String aftersignup(Model model, HttpServletRequest request, HttpServletResponse response) {
 		return "main/login";
+	}
+	
+	@RequestMapping(value = "/addrace", method = RequestMethod.GET)
+	public String addrace(Model model, HttpServletRequest request, HttpServletResponse response) {
+		return "main/addrace";
 	}
 	
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })//로그인정보 확인 후 true/false반환
