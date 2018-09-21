@@ -45,7 +45,7 @@ public class MainController {
 		}else{
 			model.addAttribute("loginCheck", true);
 		}
-		model.addAttribute("loginCheck", false);
+		//model.addAttribute("loginCheck", false);
 		return "main/login"; //main폴더의login.jsp로 ㄱㄱ
 	}
 	
