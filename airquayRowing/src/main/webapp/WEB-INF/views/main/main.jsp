@@ -38,6 +38,7 @@ function doResize(){
 	if(windowWidth>1680){
 		$("#bodyArea").css("margin-left", (windowWidth-1676)/2)
 	}
+	$("#bodyArea",parent.document).css("height",800)//임시방편
 }
 function realTimeClock() {
 	var time = getDateStamp();

@@ -14,6 +14,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=1"></script>
 <script type="text/javascript">
 var loginCheck;
+var Height;
 
 $(document).ready(function() {
 	loginCheck = "${loginCheck}";
@@ -26,7 +27,7 @@ function doResize(){
 	var windowHeight = $(window).height();
 	var headerAreaHeight = $("#headerArea").height();
 	var bottomAreaHeight = $("#bottomArea").height();
-	$("#bodyArea").css("height", windowHeight-headerAreaHeight-bottomAreaHeight);
+	$("#bodyArea").css("height",windowHeight-headerAreaHeight-bottomAreaHeight);
 }
 function dispLoginPage(){
 	if(loginCheck=="true"){

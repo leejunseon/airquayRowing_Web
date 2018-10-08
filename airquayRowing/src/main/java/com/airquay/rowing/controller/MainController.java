@@ -72,7 +72,7 @@ public class MainController {
 	
 	@RequestMapping(value = "/aftersignup", method = RequestMethod.GET)
 	public String aftersignup(Model model, HttpServletRequest request, HttpServletResponse response) {
-		return "main/login";
+		return "main/loginResult";
 	}
 	
 	@RequestMapping(value = "/addrace", method = RequestMethod.GET)

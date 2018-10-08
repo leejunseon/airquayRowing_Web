@@ -20,7 +20,7 @@ $(document).ready(function() {
 });
 
 function doResize(){
-	var windowHeight = $(window).height();
+	var windowHeight = $(window,parent.Document).height();
 	var headerAreaHeight = $("#headerArea").height();
 	var bottomAreaHeight = $("#bottomArea").height();
 	$("#bodyArea").css("height", windowHeight-headerAreaHeight-bottomAreaHeight);

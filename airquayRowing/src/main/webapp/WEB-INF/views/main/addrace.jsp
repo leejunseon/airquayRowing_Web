@@ -20,10 +20,11 @@ $(document).ready(function() {
 });
 
 function doResize(){
-	var windowHeight = $(window).height();
+	/* var windowHeight = $(window).height();
 	var headerAreaHeight = $("#headerArea").height();
 	var bottomAreaHeight = $("#bottomArea").height();
-	$("#bodyArea").css("height", windowHeight-headerAreaHeight-bottomAreaHeight);
+	$("#bodyArea").css("height", windowHeight-headerAreaHeight-bottomAreaHeight); */
+	$("#bodyArea",parent.document).css("height",800)//임시방편
 }
 function dispSignupPage(){
 	$("#bodyArea").css("display", "block");
