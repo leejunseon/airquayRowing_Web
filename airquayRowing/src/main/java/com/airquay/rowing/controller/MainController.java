@@ -75,6 +75,11 @@ public class MainController {
 		return "main/loginResult";
 	}
 	
+	@RequestMapping(value = "/afteraddrace", method = RequestMethod.GET)
+	public String afteraddrace(Model model, HttpServletRequest request, HttpServletResponse response) {
+		return "main/select";
+	}
+	
 	@RequestMapping(value = "/addrace", method = RequestMethod.GET)
 	public String addrace(Model model, HttpServletRequest request, HttpServletResponse response) {
 		return "main/addrace";

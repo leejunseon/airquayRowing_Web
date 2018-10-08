@@ -5,13 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Airquay rowing management system</title>
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=1">
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingAddrace.css?ver=1">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=1">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=2">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingAddrace.css?ver=2">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=2">
 
-<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=1"></script>
-<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=1"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=1"></script>
+<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=2"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=2"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=2"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -29,15 +29,20 @@ function doResize(){
 function dispSignupPage(){
 	$("#bodyArea").css("display", "block");
 }
-function adduser(){
-	var json_data = "user_id="+($("#user_id").val());
-		json_data += "&user_pw="+($("#user_pw").val());
-		json_data += "&user_name="+($("#user_name").val());
-		json_data += "&sex="+($("#sex").val());
-		json_data += "&birthday="+($("#birthday").val());
-		json_data += "&nationality="+($("#nationality").val());
-		json_data += "&team_num="+($("#team_num").val());
-	var url = 'http://localhost:8080/airquayRowing/main/addUser';
+function addrace(){
+	var json_data = "event_name="+($("#event_name").val());
+		json_data += "&year="+($("#year").val());
+		json_data += "&month="+($("#month").val());
+		json_data += "&day="+($("#day").val());
+		json_data += "&round_type="+($("#round_type").val());
+		json_data += "&progression="+($("#progression").val());
+		json_data += "&LaneOne="+($("#LaneOne").val());
+		json_data += "&LaneTwo="+($("#LaneTwo").val());
+		json_data += "&LaneThree="+($("#LaneThree").val());
+		json_data += "&LaneFour="+($("#LaneFour").val());
+		json_data += "&LaneFive="+($("#LaneFive").val());
+		json_data += "&LaneSix="+($("#LaneSix").val());
+	var url = 'http://localhost:8080/airquayRowing/main/addRace';
 	console.log("addUser")
 	$.ajax({
 		url:url,
@@ -47,17 +52,17 @@ function adduser(){
 		processData: false,
 		data : json_data,
 		success : function(data){		
-			resultSignup(true);
+			resultAddrace(true);
 		},
 		error : function(data){
-			resultSignup(false);
+			resultAddrace(false);
 		}
 	});
 }
-function resultSignup(data){
+function resultAddrace(data){
 	var innerHtml = "";
 	if(data==true){
-		innerHtml = "<iframe src='http://localhost:8080/airquayRowing/aftersignup' style='width: 100%; height: 100%; border: none;'></iframe>"
+		innerHtml = "<iframe src='http://localhost:8080/airquayRowing/afteraddrace' style='width: 100%; height: 100%; border: none;'></iframe>"
 			$("#bodyArea").empty();
 			$("#bodyArea").append(innerHtml)
 			$("#bodyArea").css("display", "block");
@@ -81,7 +86,7 @@ function resultSignup(data){
 					</div>
 					<div style="float: left; width: 100%; height: 50px;">
 						<div class="raceLabel">Year</div>
-						<div class="inputText"><input id="year" type="password" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+						<div class="inputText"><input id="year" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 					<div style="float: left; width: 100%; height: 50px;">
 						<div class="raceLabel">Month</div>
@@ -94,6 +99,10 @@ function resultSignup(data){
 					<div style="float: left; width: 100%; height: 50px;">
 						<div class="raceLabel">Round type</div>
 						<div class="inputText"><input id="round_type" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
+					</div>
+					<div style="float: left; width: 100%; height: 50px;">
+						<div class="raceLabel">Progression</div>
+						<div class="inputText"><input id="progression" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 					<div style="float: left; width: 100%; height: 50px;">
 						<div class="raceLabel">Lane 1</div>
@@ -120,7 +129,7 @@ function resultSignup(data){
 						<div class="inputText"><input id="LaneSix" type="text" style="width: 100%; height: 100%;" onKeyDown="if(event.keyCode==13) {login();}"/></div>
 					</div>
 				</div>
-				<div style="float: left;" onclick="javascript:adduser();">
+				<div style="float: left;" onclick="javascript:addrace();">
 					<div id="SignupBtn">Submit</div>
 				</div>
 			</div>
