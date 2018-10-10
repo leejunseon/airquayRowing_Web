@@ -56,11 +56,12 @@ var common={
 					}
 					else if((data==0)&&raceYN=="true"){
 						console.log("data="+data)
-						$("#raceStatus").text(" ");
+						common.onOffinish_timer(data);
 					}
 					else if((data==0||data==5)&&raceYN=="false"){
 						console.log("data="+data)
 						common.onOffinish_timer(data);
+						$("#raceStatus").text(" ");
 						flag=0;
 					}
 					
@@ -332,6 +333,37 @@ var common={
 	
 	start : function(num){
 		console.log("start, twoYn : "+num)
+		
+	/*	var xmlHttp;
+		function srvTime(){
+		    try {
+		        //FF, Opera, Safari, Chrome
+		        xmlHttp = new XMLHttpRequest();
+		    }
+		    catch (err1) {
+		        //IE
+		        try {
+		            xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+		        }
+		        catch (err2) {
+		            try {
+		                xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
+		            }
+		            catch (eerr3) {
+		                //AJAX not supported, use CPU time.
+		                alert("AJAX not supported");
+		            }
+		        }
+		    }
+		    xmlHttp.open('HEAD',window.location.href.toString(),false);
+		    xmlHttp.setRequestHeader("Content-Type", "text/html");
+		    xmlHttp.send('');
+		    return xmlHttp.getResponseHeader("Date");
+		}
+
+		var st = srvTime();
+		var now = new Date(st);*/
+		
 		var now = new Date();
 		if(num==2){
 			

@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Rowing Airquay</title>
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=2">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=2">
-<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=2"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=2"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=2"></script>
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=5">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=5">
+<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=5"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js?ver=5"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=5"></script>
 <script type="text/javascript">
 	var raceList;
 	var raceInfo;
@@ -38,9 +38,10 @@ function doResize(){
 	if(windowWidth>1680){
 		$("#bodyArea").css("margin-left", (windowWidth-1676)/2)
 	}
-	$("#bodyArea",parent.document).css("height",800)//임시방편
+	$("#bodyArea",parent.document).css("height",776)//임시방편
 }
 function realTimeClock() {
+	
 	var time = getDateStamp();
 	$("#time").text(time);
 }
@@ -85,11 +86,31 @@ function leadingZeros(n, digits) {
     			<option value="-">No data</option>
     		</select>
     	</div>
-<!--     	<div style="float: left; margin-left: 10px; text-align: center;" id="date"> -->
-    		<div type="text" style="float: left; margin-left: 10px; text-align: center; background-color: transparent; border: none; width: 200px; height: 35px; font-size: 32px; font-weight: bold; color: white;" id="toDay"></div>
-<!--     	</div> -->
+    	<div type="text" style="float: left; margin-left: 10px; text-align: center; background-color: transparent; border: none; width: 200px; height: 35px; font-size: 32px; font-weight: bold; color: white;" id="toDay"></div>
     	<div style="float: left; margin-left: 10px; text-align: center; font-size: 32px;" id="time"></div>
-    	<div style="float: left; margin-left: 10px; width: 120px; text-align: center; font-weight: bold; color: white;" id="raceStatus">경기종료</div>
+    	<div style="float: left; margin-left: 10px; width: 120px; text-align: center; font-weight: bold; color: white;" id="raceStatus"></div>
+    	<div style="float:right; margin-right:80px;">
+    		<div style="float:left; height:40px; width:170px; border:1px solid white">
+	    		<div style="float: left; width: 120px; text-align: center; font-weight: bold; color: white;">Start</div>
+	  	   		<div style="float: left; margin-top:5px;height:30px; width: 30px; background-color:red"id="StartStatus"> </div>
+	  	   	</div>
+	   	   	<div style="float:left; height:40px; width:170px; border:1px solid white;margin-left:10px;">
+	    		<div style="float: left; width: 120px; text-align: center; font-weight: bold; color: white;">500m</div>
+	  	   		<div style="float: left; margin-top:5px;height:30px; width: 30px; background-color:red"id="500mStatus"> </div>
+	  	   	</div>
+	  	   	<div style="float:left; height:40px; width:170px; border:1px solid white;margin-left:10px;">
+	    		<div style="float: left; width: 120px; text-align: center; font-weight: bold; color: white;">1000m</div>
+	  	   		<div style="float: left; margin-top:5px;height:30px; width: 30px; background-color:red"id="1000mStatus"> </div>
+	  	   	</div>
+	  	   	<div style="float:left; height:40px; width:170px; border:1px solid white;margin-left:10px;">
+	    		<div style="float: left; width: 120px; text-align: center; font-weight: bold; color: white;">1500m</div>
+	  	   		<div style="float: left; margin-top:5px;height:30px; width: 30px; background-color:red"id="1500mStatus"> </div>
+	  	   	</div>
+	  	   	<div style="float:left; height:40px; width:170px; border:1px solid white;margin-left:10px;">
+	    		<div style="float: left; width: 120px; text-align: center; font-weight: bold; color: white;">Finish</div>
+	  	   		<div style="float: left; margin-top:5px;height:30px; width: 30px; background-color:red"id="FinishStatus"> </div>
+	  	   	</div>
+ 	   	</div>	
     </div>
     <div style="float: left; border: 1px solid white; margin-top: 20px; width: 1675px;">
     	<div style="float: left; width: 100%;">
