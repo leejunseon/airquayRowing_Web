@@ -5,13 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Airquay rowing management system</title>
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=5">
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingSelect.css?ver=5">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=5">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=4">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingSelect.css?ver=4">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=4">
 
-<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=5"></script>
-<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=5"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=5"></script>
+<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=4"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=4"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=4"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -20,10 +20,10 @@ $(document).ready(function() {
 });
 
 function doResize(){
-	/* var windowHeight = $(window).height();
+	var windowHeight = $(window).height();
 	var headerAreaHeight = $("#headerArea").height();
 	var bottomAreaHeight = $("#bottomArea").height();
-	$("#bodyArea").css("height", windowHeight-headerAreaHeight-bottomAreaHeight); */
+	$("#bodyArea").css("height", windowHeight-headerAreaHeight-bottomAreaHeight);
 	$("#bodyArea",parent.document).css("height",776)//임시방편
 
 }
@@ -44,6 +44,13 @@ function addRace(){
 	$("#bodyArea").append(innerHtml)
 	$("#bodyArea").css("display", "block");
 }
+function recordView(){
+	var innerHtml="";
+	innerHtml="<iframe src='http://localhost:8080/airquayRowing/recordview' style='width: 100%; height: 100%; border: none;'></iframe>"
+	$("#bodyArea").empty();
+	$("#bodyArea").append(innerHtml)
+	$("#bodyArea").css("display", "block");
+}
 </script>
 </head>
 
@@ -56,7 +63,7 @@ function addRace(){
 				<div style="float: left;" onclick="javascript:Dashboard();">
 					<div id="SelectBtn">Dashboard</div>
 				</div>
-				<div style="float: left;" onclick="javascript:login();">
+				<div style="float: left;" onclick="javascript:recordView();">
 					<div id="SelectBtn">Record</div>
 				</div>
 				<div style="float: left;" onclick="javascript:addRace();">

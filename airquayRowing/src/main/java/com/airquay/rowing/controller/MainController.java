@@ -85,6 +85,11 @@ public class MainController {
 		return "main/addrace";
 	}
 	
+	@RequestMapping(value = "/recordview", method = RequestMethod.GET)
+	public String recordview(Model model, HttpServletRequest request, HttpServletResponse response) {
+		return "main/recordView";
+	}
+	
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })//로그인정보 확인 후 true/false반환
 	public @ResponseBody List login(Model model, HttpServletRequest request, HttpServletResponse response) {
 		main main = new main();
@@ -142,14 +147,25 @@ public class MainController {
 		return timeList;
 	}
 	
-	
-	
 	@RequestMapping(value = "/main/getRaceInfo", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody List getRaceInfo(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		main main = new main();
 		String raceDate = request.getParameter("raceDate");
 		List<List> raceInfo = rowingService.getRaceInfo(raceDate);
 		return raceInfo;
+	}
+	
+	@RequestMapping(value = "/main/getTeamInfo", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody List getTeamInfo(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		List<Object> teamInfo = rowingService.getteamList();
+		return teamInfo;
+	}
+	
+	@RequestMapping(value = "/main/getRecord", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody List displayRecord(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		String teamName=request.getParameter("team_name");
+		List<Object> record = rowingService.getRecord(teamName);
+		return record;
 	}
 	
 	@RequestMapping(value = "/main/getBowInfo", method = { RequestMethod.GET, RequestMethod.POST })

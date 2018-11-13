@@ -164,6 +164,24 @@
 		where ri.race_date = '${value}'
 	</select>
 	
+	<select id="getRecord" parameterType="com.airquay.rowing.vo.main" resultType="Object">
+		select 500_time
+		from record join team_info
+		on record.team_num=team_info.team_num
+		where team_info.team_name='${value}' 
+	</select>
+	
+	<select id="getTeamList" parameterType="com.airquay.rowing.vo.main" resultType="Object">
+		select team_info.team_name
+		from airquay.team_info
+		where team_info.team_num in 
+		(
+			select record.team_num
+			from record
+			group by team_num
+		)
+	</select>
+	
 	<select id="getStartTime" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
 		select raceinfo.start_time
 		
@@ -333,7 +351,7 @@
 		
 		where 
 		race_num='${value}' and
-		team_num='1';
+		bow_num='1';
 	</select>
 	
 	<select id="five_null_two" parameterType="String" resultType="String">
@@ -343,7 +361,7 @@
 		
 		where 
 		race_num='${value}' and
-		team_num='2';
+		bow_num='2';
 	</select>
 	
 	<select id="five_null_three" parameterType="String" resultType="String">
@@ -353,7 +371,7 @@
 		
 		where 
 		race_num='${value}' and
-		team_num='3';
+		bow_num='3';
 	</select>
 	
 	<select id="five_null_four" parameterType="String" resultType="String">
@@ -363,7 +381,7 @@
 		
 		where 
 		race_num='${value}' and
-		team_num='4';
+		bow_num='4';
 	</select>
 	
 	<select id="five_null_five" parameterType="String" resultType="String">
@@ -373,7 +391,7 @@
 		
 		where 
 		race_num='${value}' and
-		team_num='5';
+		bow_num='5';
 	</select>
 	
 	<select id="five_null_six" parameterType="String" resultType="String">
@@ -383,7 +401,7 @@
 		
 		where 
 		race_num='${value}' and
-		team_num='6';
+		bow_num='6';
 	</select>
 
 	<insert id="addUser" parameterType="com.airquay.rowing.vo.main">
@@ -416,8 +434,7 @@
 	</select>
 	
 	<select id="getRacenum" parameterType="com.airquay.rowing.vo.main" resultType="String">
-		select race_num
-		
+		select count(raceinfo.race_num)
 		from airquay.raceinfo
 	</select>
 	

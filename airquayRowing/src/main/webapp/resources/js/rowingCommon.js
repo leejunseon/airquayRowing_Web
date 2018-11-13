@@ -54,14 +54,13 @@ var common={
 						console.log("data="+data)
 						common.refresh();
 					}
-					else if((data==0)&&raceYN=="true"){
+					else if((data==0)&&raceYN=="true"){//경기시작 전
 						console.log("data="+data)
-						common.onOffinish_timer(data);
-					}
-					else if((data==0||data==5)&&raceYN=="false"){
-						console.log("data="+data)
-						common.onOffinish_timer(data);
 						$("#raceStatus").text(" ");
+					}
+					else if((data==0||data==5)&&raceYN=="false"){//경기종료
+						console.log("data="+data)
+						common.onOffinish_timer(data);
 						flag=0;
 					}
 					
@@ -156,8 +155,10 @@ var common={
 			else
 				$("#rank2000_"+rankList[i].bow_num).text("-");
 			for(var j=0;j<rankList.length;j++){
-				if(rankList[j].finish_rank==i+1&&rankList[j].finish_rank!=null)
+				if(rankList[j].finish_rank==i+1&&rankList[j].finish_rank!=null){
 					$("#"+(i+1)+"rankTeamName").text(rankList[j].team_name);
+					break;
+				}
 				if(rankList[j].finish_rank==null)
 					$("#"+(i+1)+"rankTeamName").text("-");
 			}
@@ -185,6 +186,35 @@ var common={
 			},
 			error : function(data){
 				console.log("getRaceInfo error")
+			}
+		});
+	},
+	
+	//팀 정보 가져옴
+	getTeamInfo : function(){
+		console.log("getTeamInfo")
+		var json_data = " ";//toDay를 raceDate파라미터로 넘김
+		$.ajax({
+			url:'http://localhost:8080/airquayRowing/main/getTeamInfo',
+			type : 'GET',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data : json_data,
+			dataType : 'json',
+			success : function(data){
+				console.log("getTeamInfo Success")
+				if(data.length>0){
+					teamInfo = data;
+					var innerHtml = "";
+					for(var i=0; i<teamInfo.length; i++){
+						innerHtml += "<option value="+(teamInfo[i])+">"+teamInfo[i]+"</option>"
+					}
+					$("#teams").empty().append(innerHtml);
+				}
+			},
+			error : function(data){
+				console.log("getTeamInfo error")
 			}
 		});
 	},
@@ -277,6 +307,31 @@ var common={
 	
 	refresh : function(){
 		$("#watchtime").text("00:00:00.00");
+	},
+	
+	displayRecord : function(){
+		console.log("displayRecord")
+		var json_data = "team_name="+($("#teams").val());
+		$.ajax({
+			url:'http://localhost:8080/airquayRowing/main/getRecord',
+			type : 'GET',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data : json_data,
+			dataType : 'json',
+			success : function(data){
+				records=data;
+				var innerHtml = "";
+				for(var i=0; i<records.length; i++){
+					innerHtml += records[i]+"<br>"
+				}
+				$("#records").empty().append(innerHtml);
+			},
+			error : function(data){
+				console.log("displayRecord error")
+			}
+		});
 	},
 	
 	//타이머 제어

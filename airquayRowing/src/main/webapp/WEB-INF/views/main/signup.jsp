@@ -5,13 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Airquay rowing management system</title>
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=5">
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingSignup.css?ver=5">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=5">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=4">
+<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingSignup.css?ver=4">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=4">
 
-<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=5"></script>
-<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=5"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=5"></script>
+<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=4"></script>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=4"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=4"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {

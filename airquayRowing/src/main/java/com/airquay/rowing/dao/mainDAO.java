@@ -57,5 +57,9 @@ public interface mainDAO {
 	void addRace(main main);
 
 	int getRacenum();
+
+	List getTeamList();
+
+	List getRecord(String teamName);
 	
 }
