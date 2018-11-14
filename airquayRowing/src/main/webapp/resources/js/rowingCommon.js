@@ -208,7 +208,7 @@ var common={
 					teamInfo = data;
 					var innerHtml = "";
 					for(var i=0; i<teamInfo.length; i++){
-						innerHtml += "<option value="+(teamInfo[i])+">"+teamInfo[i]+"</option>"
+						innerHtml += "<option value="+(teamInfo[i].team_num)+">"+teamInfo[i].team_name+"</option>"
 					}
 					$("#teams").empty().append(innerHtml);
 				}
@@ -311,7 +311,7 @@ var common={
 	
 	displayRecord : function(){
 		console.log("displayRecord")
-		var json_data = "team_name="+($("#teams").val());
+		var json_data = "team_num="+($("#teams").val());
 		$.ajax({
 			url:'http://localhost:8080/airquayRowing/main/getRecord',
 			type : 'GET',
@@ -322,11 +322,40 @@ var common={
 			dataType : 'json',
 			success : function(data){
 				records=data;
-				var innerHtml = "";
+				var innerHtmlInfo = "";
+				var innerHtml500 = "";
+				var innerHtml1000 = "";
+				var innerHtml1500 = "";
+				var innerHtmlFinish = "";
+				var innerHtmlRank="";
 				for(var i=0; i<records.length; i++){
-					innerHtml += records[i]+"<br>"
+					if(records[i].finish_time!=null){
+						innerHtmlInfo+=records[i].event_name+"  <"+records[i].race_date+"><hr>";
+						innerHtmlRank+=records[i].finish_rank+"<hr>";
+						if(records[i].fivehundred_time!=null)
+							innerHtml500 += records[i].fivehundred_time+"<hr>";
+						else
+							innerHtml500 += "-"+"<hr>";
+						if(records[i].thousand_time!=null)
+							innerHtml1000 += records[i].thousand_time+"<hr>";
+						else
+							innerHtml1000 += "-"+"<hr>";
+						if(records[i].thousandfivehundred_time!=null)
+							innerHtml1500 +=records[i].thousandfivehundred_time+"<hr>";
+						else
+							innerHtml1500 += "-"+"<hr>";
+						if(records[i].finish_time!=null)
+							innerHtmlFinish +=records[i].finish_time+"<hr>";
+						else
+							innerHtmlFinish += "-"+"<hr>";
+					}
 				}
-				$("#records").empty().append(innerHtml);
+				$("#recordinfo").empty().append(innerHtmlInfo);
+				$("#record500").empty().append(innerHtml500);
+				$("#record1000").empty().append(innerHtml1000);
+				$("#record1500").empty().append(innerHtml1500);
+				$("#finish").empty().append(innerHtmlFinish);
+				$("#rank").empty().append(innerHtmlRank);
 			},
 			error : function(data){
 				console.log("displayRecord error")

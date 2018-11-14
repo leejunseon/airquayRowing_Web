@@ -164,20 +164,30 @@
 		where ri.race_date = '${value}'
 	</select>
 	
-	<select id="getRecord" parameterType="com.airquay.rowing.vo.main" resultType="Object">
-		select 500_time
-		from record join team_info
-		on record.team_num=team_info.team_num
-		where team_info.team_name='${value}' 
+	<select id="getRecord" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
+		select 	event_name,
+				raceinfo.race_date,
+				500_time as fivehundred_time,
+				1000_time as thousand_time,
+				1500_time as thousandfivehundred_time,
+				finish_time,
+				finish_rank
+				
+		from record 
+		inner join team_info on record.team_num=team_info.team_num
+		inner join raceinfo on record.race_num=raceinfo.race_num
+				
+		where team_info.team_num='${value}' 
 	</select>
 	
-	<select id="getTeamList" parameterType="com.airquay.rowing.vo.main" resultType="Object">
-		select team_info.team_name
+	<select id="getTeamList" parameterType="com.airquay.rowing.vo.main" resultType="com.airquay.rowing.vo.main">
+		select team_info.team_name,team_info.team_num
 		from airquay.team_info
 		where team_info.team_num in 
 		(
 			select record.team_num
 			from record
+			where record.finish_time is not null
 			group by team_num
 		)
 	</select>

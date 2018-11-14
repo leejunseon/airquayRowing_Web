@@ -192,15 +192,15 @@ public class rowingService {
 		return race_num;
 	}
 
-	public List<Object> getteamList() {
+	public List<List> getteamList() {
 		// TODO Auto-generated method stub
 		List teamList=mainDAO.getTeamList();
 		return teamList;
 	}
 
-	public List<Object> getRecord(String teamName) {
+	public List<List> getRecord(String teamName) {
 		// TODO Auto-generated method stub
-		List record=mainDAO.getRecord(teamName);
+		List<List> record=mainDAO.getRecord(teamName);
 		return record;
 	}
 

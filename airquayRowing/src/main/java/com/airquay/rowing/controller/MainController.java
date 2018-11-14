@@ -157,14 +157,14 @@ public class MainController {
 	
 	@RequestMapping(value = "/main/getTeamInfo", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody List getTeamInfo(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		List<Object> teamInfo = rowingService.getteamList();
+		List<List> teamInfo = rowingService.getteamList();
 		return teamInfo;
 	}
 	
 	@RequestMapping(value = "/main/getRecord", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody List displayRecord(Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		String teamName=request.getParameter("team_name");
-		List<Object> record = rowingService.getRecord(teamName);
+		String teamName=request.getParameter("team_num");
+		List<List> record = rowingService.getRecord(teamName);
 		return record;
 	}
 	

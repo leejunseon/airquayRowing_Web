@@ -270,7 +270,7 @@ public class mainDaoImpl  implements mainDAO{
 	}
 
 	@Override
-	public List<List> getRecord(String teamName) {
+	public List getRecord(String teamName) {
 		// TODO Auto-generated method stub
 		List record=sqlSession.selectList(mapper+"getRecord",teamName);
 		return record;
