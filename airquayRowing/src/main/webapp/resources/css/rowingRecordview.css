@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+#headerArea {
+	height: 60px;
+}
+#titleArea{
+    padding-left: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 60px;
+    color: white;
+}

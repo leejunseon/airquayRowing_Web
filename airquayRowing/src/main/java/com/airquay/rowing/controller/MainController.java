@@ -35,7 +35,6 @@ public class MainController {
 	@Autowired
 	private com.airquay.rowing.service.rowingService rowingService;
 	
-	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)//http://localhost:8080/airquayRowing/main 접속 시 호출
 	public String main(Model model, HttpServletRequest request, HttpServletResponse response) {
  		HttpSession session = request.getSession();
@@ -57,7 +56,7 @@ public class MainController {
 		String mTime = mSimpleDateFormat.format ( currentTime );
 		raceList = rowingService.getRaceList(mTime);
 		model.addAttribute("raceList", raceList);
-		return "main/main";//main폴더의 main.jsp로 ㄱㄱ
+		return "main/dashboard";//main폴더의 main.jsp로 ㄱㄱ
 	}
 	
 	@RequestMapping(value = "/select", method = RequestMethod.GET)
@@ -88,6 +87,11 @@ public class MainController {
 	@RequestMapping(value = "/recordview", method = RequestMethod.GET)
 	public String recordview(Model model, HttpServletRequest request, HttpServletResponse response) {
 		return "main/recordView";
+	}
+	
+	@RequestMapping(value = "/returnlogin", method = RequestMethod.GET)
+	public String returnlogin(Model model, HttpServletRequest request, HttpServletResponse response) {
+		return "main/login";
 	}
 	
 	@RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })//로그인정보 확인 후 true/false반환

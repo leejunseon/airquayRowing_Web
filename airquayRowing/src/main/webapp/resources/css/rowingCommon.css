@@ -1,5 +1,19 @@
 @charset "UTF-8";
 
+#header {
+	height: 60px;
+}
+#title{
+	padding-left: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 60px;
+    color: white;
+}
+
+#bodyArea{
+	position: relative;
+}
 body {
         background-color: #3e6699;
 }

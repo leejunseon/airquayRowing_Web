@@ -54,7 +54,7 @@ function adduser(){
 	});
 }
 function resultSignup(data){
-	var innerHtml = "";
+	/* var innerHtml = "";
 	if(data==true){
 		innerHtml = "<iframe src='http://localhost:8080/airquayRowing/aftersignup' style='width: 100%; height: 100%; border: none;'></iframe>"
 			$("#bodyArea").empty();
@@ -62,12 +62,17 @@ function resultSignup(data){
 			$("#bodyArea").css("display", "block");
 	}else{
 		alert("Fill in all the contents");
-	}
+	} */
+	
+	location.href="returnlogin";
 }
 </script>
 </head>
 
 <body style="margin: 0px; background-color: #3e6699; overflow: hidden;">
+	<div id="headerArea">
+		<div id="titleArea">Rowing Management System</div>
+	</div>
 	<div id="bodyArea" style="display: none;">
 	<img alt="" id="LoginImage" src="http://localhost:8080/airquayRowing/resources/img/main_visual_01.jpg" style="width:100%;">
 		<div id="SignupArea">

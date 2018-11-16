@@ -24,7 +24,7 @@ function doResize(){
 	var headerAreaHeight = $("#headerArea").height();
 	var bottomAreaHeight = $("#bottomArea").height();
 	$("#bodyArea").css("height", windowHeight-headerAreaHeight-bottomAreaHeight);
-	$("#bodyArea",parent.document).css("height",776)//임시방편
+	//$("#bodyArea",parent.document).css("height",776)//임시방편
 }
 function dispSignupPage(){
 	$("#bodyArea").css("display", "block");
@@ -74,6 +74,9 @@ function resultAddrace(data){
 </head>
 
 <body style="margin: 0px; background-color: #3e6699; overflow: hidden;">
+	<div id="headerArea">
+		<div id="titleArea">Rowing Management System</div>
+	</div>
 	<div id="bodyArea" style="display: none;">
 	<img alt="" id="LoginImage" src="http://localhost:8080/airquayRowing/resources/img/main_visual_01.jpg" style="width:100%;">
 		<div id="addraceArea">

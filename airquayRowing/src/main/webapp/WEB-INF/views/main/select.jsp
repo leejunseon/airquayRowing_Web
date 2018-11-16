@@ -24,37 +24,44 @@ function doResize(){
 	var headerAreaHeight = $("#headerArea").height();
 	var bottomAreaHeight = $("#bottomArea").height();
 	$("#bodyArea").css("height", windowHeight-headerAreaHeight-bottomAreaHeight);
-	$("#bodyArea",parent.document).css("height",776)//임시방편
+	//$("#bodyArea",parent.document).css("height",776)//임시방편
 
 }
 function dispSelectPage(){
 	$("#bodyArea").css("display", "block");
 }
 function Dashboard(){
-	var innerHtml = "";
+	/* var innerHtml = "";
 	innerHtml = "<iframe src='http://localhost:8080/airquayRowing/dashboard' style='width: 100%; height: 100%; border: none;'></iframe>"
 	$("#bodyArea").empty();
 	$("#bodyArea").append(innerHtml)
-	$("#bodyArea").css("display", "block");
+	$("#bodyArea").css("display", "block"); */
+	
+	location.href="dashboard";
 }
 function addRace(){
-	var innerHtml = "";
+	/* var innerHtml = "";
 	innerHtml = "<iframe src='http://localhost:8080/airquayRowing/addrace' style='width: 100%; height: 100%; border: none;'></iframe>"
 	$("#bodyArea").empty();
 	$("#bodyArea").append(innerHtml)
-	$("#bodyArea").css("display", "block");
+	$("#bodyArea").css("display", "block"); */
+	location.href="addrace";
 }
 function recordView(){
-	var innerHtml="";
+/* 	var innerHtml="";
 	innerHtml="<iframe src='http://localhost:8080/airquayRowing/recordview' style='width: 100%; height: 100%; border: none;'></iframe>"
 	$("#bodyArea").empty();
 	$("#bodyArea").append(innerHtml)
-	$("#bodyArea").css("display", "block");
+	$("#bodyArea").css("display", "block"); */
+	location.href="recordview";
 }
 </script>
 </head>
 
 <body style="margin: 0px; background-color: #3e6699; overflow: hidden;">
+	<div id="headerArea">
+		<div id="titleArea">Rowing Management System</div>
+	</div>
 	<div id="bodyArea" style="display: none;">
 		<img alt="" id="LoginImage" src="http://localhost:8080/airquayRowing/resources/img/main_visual_01.jpg" style="width:100%;">
 		<div id="SelectArea">

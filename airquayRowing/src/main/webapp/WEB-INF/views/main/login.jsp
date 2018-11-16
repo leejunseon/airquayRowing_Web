@@ -58,14 +58,15 @@ function login(){
 	});
 }
 function signup(){
-	var innerHtml="";
+	/* var innerHtml="";
 	innerHtml = "<iframe src='http://localhost:8080/airquayRowing/signup' style='width: 100%; height: 100%; border: none;'></iframe>"
 	$("#bodyArea").empty();
 	$("#bodyArea").append(innerHtml)
-	$("#bodyArea").css("display", "block");
+	$("#bodyArea").css("display", "block"); */
+	location.href="signup";
 }
 function resultLogin(data){
-	var innerHtml = "";
+	/* var innerHtml = "";
 	if(data==true){
 		innerHtml = "<iframe src='http://localhost:8080/airquayRowing/select' style='width: 100%; height: 100%; border: none;'></iframe>"
 			$("#bodyArea").empty();
@@ -73,7 +74,8 @@ function resultLogin(data){
 			$("#bodyArea").css("display", "block");
 	}else{
 		alert("Please check ID or Password");
-	}
+	} */
+	location.href="select";
 }
 </script>
 </head>
