@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Airquay rowing management system</title>
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingCommon.css?ver=2">
-<link type="text/css" rel="stylesheet" href="http://localhost:8080/airquayRowing/resources/css/rowingAddrace.css?ver=2">
+<link type="text/css" rel="stylesheet" href="http://13.209.161.83:8080/airquayRowing/resources/css/rowingCommon.css?ver=2">
+<link type="text/css" rel="stylesheet" href="http://13.209.161.83:8080/airquayRowing/resources/css/rowingAddrace.css?ver=2">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver=2">
 
-<script src="http://localhost:8080/airquayRowing/resources/js/rowingCommon.js?ver=2"></script>
+<script src="http://13.209.161.83:8080/airquayRowing/resources/js/rowingCommon.js?ver=2"></script>
 <script src="https://code.jquery.com/jquery-3.0.0.min.js?ver=2"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js?ver=2"></script>
 <script type="text/javascript">
@@ -42,7 +42,7 @@ function addrace(){
 		json_data += "&LaneFour="+($("#LaneFour").val());
 		json_data += "&LaneFive="+($("#LaneFive").val());
 		json_data += "&LaneSix="+($("#LaneSix").val());
-	var url = 'http://localhost:8080/airquayRowing/main/addRace';
+	var url = 'http://13.209.161.83:8080/airquayRowing/main/addRace';
 	console.log("addUser")
 	$.ajax({
 		url:url,
@@ -60,15 +60,16 @@ function addrace(){
 	});
 }
 function resultAddrace(data){
-	var innerHtml = "";
+	/* var innerHtml = "";
 	if(data==true){
-		innerHtml = "<iframe src='http://localhost:8080/airquayRowing/afteraddrace' style='width: 100%; height: 100%; border: none;'></iframe>"
+		innerHtml = "<iframe src='http://13.209.161.83:8080/airquayRowing/afteraddrace' style='width: 100%; height: 100%; border: none;'></iframe>"
 			$("#bodyArea").empty();
 			$("#bodyArea").append(innerHtml)
 			$("#bodyArea").css("display", "block");
 	}else{
 		alert("Fill in all the contents");
-	}
+	} */
+	location.href="select";
 }
 </script>
 </head>
@@ -78,7 +79,7 @@ function resultAddrace(data){
 		<div id="titleArea">Rowing Management System</div>
 	</div>
 	<div id="bodyArea" style="display: none;">
-	<img alt="" id="LoginImage" src="http://localhost:8080/airquayRowing/resources/img/main_visual_01.jpg" style="width:100%;">
+	<img alt="" id="LoginImage" src="http://13.209.161.83:8080/airquayRowing/resources/img/main_visual_01.jpg" style="width:100%;">
 		<div id="addraceArea">
 			<div style="float: left; width: 100%; height: 50px; font-size: 30px; text-indent: 30px; font-weight: bold; margin-top: 20px;">Race info</div>
 			<div style="float: left; width: 100%;">

@@ -19,7 +19,7 @@ SimpleDateFormat fm1 = new SimpleDateFormat("yyyy-MM-dd");
 String CurrentDate = request.getParameter("raceDate");
 
 try{
-String url = "jdbc:mysql://localhost:3306/airquay";
+String url = "jdbc:mysql://13.209.161.83:3306/airquay";
 Class.forName("com.mysql.jdbc.Driver");
 conn = DriverManager.getConnection(url, "root", "airquay1!");
 String sql = "select raceDate from raceInfo where race_num=1;";

@@ -17,7 +17,7 @@ java.util.Date today = new java.util.Date();
 SimpleDateFormat fm1 = new SimpleDateFormat("yyyy-MM-dd");
 
 try{
-String url = "jdbc:mysql://localhost:3306/airquay";
+String url = "jdbc:mysql://13.209.161.83:3306/airquay";
 Class.forName("com.mysql.jdbc.Driver");
 conn = DriverManager.getConnection(url, "root", "airquay1!");
 race_num=request.getParameter("race_num");
