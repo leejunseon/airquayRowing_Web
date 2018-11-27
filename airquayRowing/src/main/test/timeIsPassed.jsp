@@ -22,7 +22,7 @@
             ResultSet rs = null;
 
             try{
-                String jdbcDriver = "jdbc:mysql://13.209.161.83:3306/airquay";
+                String jdbcDriver = "jdbc:mysql://localhost:3306/airquay";
                 String dbUser = "root";
                 String dbPwd = "airquay1!";
 

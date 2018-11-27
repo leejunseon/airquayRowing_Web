@@ -13,7 +13,7 @@ ResultSet rs = null;
 // JSONObject sMain = new JSONObject();
 String raceDate=null;
 String driverName="com.mysql.jdbc.Driver";
-String url = "jdbc:mysql://13.209.161.83:3306/airquay";
+String url = "jdbc:mysql://localhost:3306/airquay";
 String id = "root";
 String pwd ="airquay1!";
 try{

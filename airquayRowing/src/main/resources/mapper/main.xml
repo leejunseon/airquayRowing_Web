@@ -355,7 +355,7 @@
 	</select>
 	
 	<select id="five_null_one" parameterType="String" resultType="String">
-		select record.500_time
+		select record.finish_time
 		
 		from airquay.record
 		
@@ -365,7 +365,7 @@
 	</select>
 	
 	<select id="five_null_two" parameterType="String" resultType="String">
-		select record.500_time
+		select record.finish_time
 		
 		from airquay.record
 		
@@ -375,7 +375,7 @@
 	</select>
 	
 	<select id="five_null_three" parameterType="String" resultType="String">
-		select record.500_time
+		select record.finish_time
 		
 		from airquay.record
 		
@@ -385,7 +385,7 @@
 	</select>
 	
 	<select id="five_null_four" parameterType="String" resultType="String">
-		select record.500_time
+		select record.finish_time
 		
 		from airquay.record
 		
@@ -395,7 +395,7 @@
 	</select>
 	
 	<select id="five_null_five" parameterType="String" resultType="String">
-		select record.500_time
+		select record.finish_time
 		
 		from airquay.record
 		
@@ -405,7 +405,7 @@
 	</select>
 	
 	<select id="five_null_six" parameterType="String" resultType="String">
-		select record.500_time
+		select record.finish_time
 		
 		from airquay.record
 		
